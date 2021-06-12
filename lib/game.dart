@@ -15,7 +15,7 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Qwiz - Fragen'), // TODO
+        title: Text('XXXXXXXXX'), // TODO
         actions: <Widget>[
           SettingsButton(),
         ],
@@ -33,14 +33,34 @@ class GameBody extends StatefulWidget {
 class GameBodyState extends State {
   final questionPadding = 24.0;
   final buttonPadding = 12.0;
+
+  int questionCounter = 0;
+  String counterText = 'Frage 0 von 99:';
   String questionText = 'Wie viele XYZ sind im Themengebiet <b>asdf</b> bei KL^mn von Bedeutung?';
   String answerText1 = 'Aaaaaaaaaaa';
   String answerText2 = 'Be';
   String answerText3 = 'C\nC\nC';
   String answerText4 = 'DEV';
 
+  changeTexts() {
+    increaseQuestionCounter();
+    updateCounterText();
+    changeQuestionText();
+  }
 
-  changeText() {
+  increaseQuestionCounter() {
+    setState(() {
+      questionCounter++;
+    });
+  }
+
+  updateCounterText() {
+    setState(() {
+      counterText = 'Frage ' + questionCounter.toString() + ' von 99:';
+    });
+  }
+
+  changeQuestionText() {
     setState(() {
       questionText = 'New Text!!!\n50 \u00B5T';
     });
@@ -66,7 +86,7 @@ class GameBodyState extends State {
               height: questionHeight,
               child: Center(
                 child: Text(
-                  '$questionText',
+                  counterText + '\n' + questionText,
                   textScaleFactor: 1.5,
                 ),
               ),
@@ -81,7 +101,7 @@ class GameBodyState extends State {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => changeText(),
+                  onPressed: () => changeTexts(),
                   child: Text(answerText1),
                 ),
               ),
@@ -91,14 +111,13 @@ class GameBodyState extends State {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => changeText(),
+                  onPressed: () => changeTexts(),
                   child: Text(answerText2),
                 ),
               ),
             ],
           ),
           Row(
-            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
@@ -107,7 +126,7 @@ class GameBodyState extends State {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => changeText(),
+                  onPressed: () => changeTexts(),
                   child: Text(answerText3),
                 ),
               ),
@@ -117,7 +136,7 @@ class GameBodyState extends State {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => changeText(),
+                  onPressed: () => changeTexts(),
                   child: Text(answerText4),
                 ),
               ),
