@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'category.dart';
 import 'question.dart';
 import 'question_catcher.dart';
 import 'settings.dart';
+
 
 class QuizPage extends StatefulWidget {
   static final routeName = '/quiz';
@@ -17,18 +20,42 @@ class _QuizPageState extends State<QuizPage> {
   final buttonPadding = 12.0;
 
   int questionCounter = 0;
-  int numberOfQuestions = 99;
-  String counterText = 'Frage 0 von 99:';
-  String questionText = 'Wie viele XYZ sind im Themengebiet <b>asdf</b> bei KL^mn von Bedeutung?';
-  String answerText1 = 'Aaaaaaaaaaa';
-  String answerText2 = 'Be';
-  String answerText3 = 'C\nC\nC';
-  String answerText4 = 'DEV';
+  int numberOfQuestions = 0;
+  String counterText = '';
+  String questionText = '';
+  String answerText1 = '';
+  String answerText2 = '';
+  String answerText3 = '';
+  String answerText4 = '';
+  List<Question> questions = List.empty();
 
-  setNumberOfQuestions(int n) {
+  setNumberOfQuestions() {
     setState(() {
-      numberOfQuestions = n;
+      numberOfQuestions = questions.length;
     });
+  }
+
+  setQuestions(List<Question> listOfQuestions) {
+    setState(() {
+      questions = listOfQuestions;
+    });
+  }
+
+  List<String> myRandomAnswerList(Question q) {
+    final answers = List<String>.empty(growable: true);
+    final temp = List<String>.empty(growable: true);
+
+    temp.add(q.rightAnswer);
+    temp.add(q.wrongAnswer1);
+    temp.add(q.wrongAnswer2);
+    temp.add(q.wrongAnswer3);
+
+    answers.add(temp.removeAt(Random().nextInt(4)));
+    answers.add(temp.removeAt(Random().nextInt(3)));
+    answers.add(temp.removeAt(Random().nextInt(2)));
+    answers.add(temp.removeAt(0));
+
+    return answers;
   }
 
   increaseQuestionCounter() {
@@ -37,22 +64,17 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
-  updateCounterText() {
+  updateAllTexts(List<Question> questions) {
     setState(() {
-      counterText = 'Frage ' + questionCounter.toString() + ' von ' + numberOfQuestions.toString() + ':';
+      counterText = 'Frage ' + (questionCounter + 1).toString() + ' von ' + numberOfQuestions.toString() + ':';
+      Question currentQuestion = questions.elementAt(questionCounter);
+      questionText = currentQuestion.questionText;
+      List<String> answers = myRandomAnswerList(currentQuestion);
+      answerText1 = answers.removeLast();
+      answerText2 = answers.removeLast();
+      answerText3 = answers.removeLast();
+      answerText4 = answers.removeLast();
     });
-  }
-
-  changeQuestionText() {
-    setState(() {
-      questionText = 'New Text!!!\n50 \u00B5T';
-    });
-  }
-
-  changeTexts() {
-    increaseQuestionCounter();
-    updateCounterText();
-    changeQuestionText();
   }
 
   @override
@@ -67,9 +89,9 @@ class _QuizPageState extends State<QuizPage> {
     final buttonWidth = screenWidth / 2 - 2 * buttonPadding;
     final buttonHeight = buttonWidth / 2;
 
-    final questions = QuestionCatcher.getQuestions(category);
-    setNumberOfQuestions(questions.length);
-    changeTexts();
+    setQuestions(QuestionCatcher.getQuestions(category));
+    setNumberOfQuestions();
+    updateAllTexts(questions);
 
     return Scaffold(
       appBar: AppBar(
@@ -103,7 +125,7 @@ class _QuizPageState extends State<QuizPage> {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => changeTexts(),
+                  onPressed: () => increaseQuestionCounter(),
                   child: Text(answerText1),
                 ),
               ),
@@ -113,7 +135,7 @@ class _QuizPageState extends State<QuizPage> {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => changeTexts(),
+                  onPressed: () => increaseQuestionCounter(),
                   child: Text(answerText2),
                 ),
               ),
@@ -128,7 +150,7 @@ class _QuizPageState extends State<QuizPage> {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => changeTexts(),
+                  onPressed: () => increaseQuestionCounter(),
                   child: Text(answerText3),
                 ),
               ),
@@ -138,7 +160,7 @@ class _QuizPageState extends State<QuizPage> {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => changeTexts(),
+                  onPressed: () => increaseQuestionCounter(),
                   child: Text(answerText4),
                 ),
               ),
