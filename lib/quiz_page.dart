@@ -5,12 +5,12 @@ import 'question.dart';
 import 'question_catcher.dart';
 import 'settings.dart';
 
-class GamePage extends StatefulWidget {
+class QuizPage extends StatefulWidget {
   @override
-  _GamePageState createState() => _GamePageState();
+  _QuizPageState createState() => _QuizPageState();
 }
 
-class _GamePageState extends State<GamePage> {
+class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     final category = Category.cosmos;
@@ -21,17 +21,17 @@ class _GamePageState extends State<GamePage> {
           SettingsButton(),
         ],
       ),
-      body: GameBody(),
+      body: QuizBody(),
     );
   }
 }
 
-class GameBody extends StatefulWidget {
+class QuizBody extends StatefulWidget {
   @override
-  GameBodyState createState() => GameBodyState();
+  QuizBodyState createState() => QuizBodyState();
 }
 
-class GameBodyState extends State {
+class QuizBodyState extends State {
   final questionPadding = 24.0;
   final buttonPadding = 12.0;
 

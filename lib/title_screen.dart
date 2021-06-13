@@ -1,3 +1,4 @@
+import 'package:code_labs/quiz_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -13,6 +14,12 @@ class TitleScreen extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
       ),
+      initialRoute: '/',
+      routes: {
+        '/settings': (context) => SettingsPage(),
+        '/categories': (context) => CategoryPage(),
+        '/game': (context) => QuizPage(),
+      },
       home: TitleScreenContent(),
     );
   }
@@ -66,12 +73,15 @@ class TitleScreenContent extends StatelessWidget {
                 child: ElevatedButton(
                   child: Text('START', textScaleFactor: 1.25,),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
+                      '/categories',
+                      /*
                       PageTransition(
                         type: PageTransitionType.rightToLeftWithFade,
                         child: CategoryPage(),
                       ),
+                       */
                     );
                   },
                 ),
@@ -86,12 +96,15 @@ class TitleScreenContent extends StatelessWidget {
                 child: TextButton(
                   child: Text('Einstellungen', textScaleFactor: 1.25,),
                   onPressed: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
+                      '/settings',
+                      /*
                       PageTransition(
                         type: PageTransitionType.fade,
                         child: SettingsPage(),
                       ),
+                       */
                     );
                   },
                 ),

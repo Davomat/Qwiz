@@ -25,13 +25,16 @@ class SettingsButton extends StatelessWidget {
         semanticLabel: 'settings',
       ),
       onPressed: () {
-        Navigator.push(
+        Navigator.pushNamed(
           context,
+          '/settings',
+          /*
           PageTransition(
             type: PageTransitionType.scale,
             alignment: Alignment.topRight,
             child: SettingsPage(),
           ),
+           */
         );
       },
     );

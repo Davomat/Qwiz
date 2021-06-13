@@ -1,4 +1,4 @@
-import 'package:code_labs/game.dart';
+import 'package:code_labs/quiz_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -81,12 +81,15 @@ class CategoryPage extends StatelessWidget {
             textScaleFactor: 1.25,
           ),
           onPressed: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
+              '/game',
+              /*
               PageTransition(
                 type: PageTransitionType.fade,
-                child: GamePage(),
+                child: QuizPage(),
               ),
+               */
             );
           },
         ),
