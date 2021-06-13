@@ -6,36 +6,18 @@ import 'question_catcher.dart';
 import 'settings.dart';
 
 class QuizPage extends StatefulWidget {
+  static final routeName = '/quiz';
+
   @override
   _QuizPageState createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
-  @override
-  Widget build(BuildContext context) {
-    final category = Category.cosmos;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Fragen - ' + CategoryHandler.getShortString(category)), // TODO
-        actions: <Widget>[
-          SettingsButton(),
-        ],
-      ),
-      body: QuizBody(),
-    );
-  }
-}
-
-class QuizBody extends StatefulWidget {
-  @override
-  QuizBodyState createState() => QuizBodyState();
-}
-
-class QuizBodyState extends State {
   final questionPadding = 24.0;
   final buttonPadding = 12.0;
 
   int questionCounter = 0;
+  int numberOfQuestions = 99;
   String counterText = 'Frage 0 von 99:';
   String questionText = 'Wie viele XYZ sind im Themengebiet <b>asdf</b> bei KL^mn von Bedeutung?';
   String answerText1 = 'Aaaaaaaaaaa';
@@ -43,10 +25,10 @@ class QuizBodyState extends State {
   String answerText3 = 'C\nC\nC';
   String answerText4 = 'DEV';
 
-  changeTexts() {
-    increaseQuestionCounter();
-    updateCounterText();
-    changeQuestionText();
+  setNumberOfQuestions(int n) {
+    setState(() {
+      numberOfQuestions = n;
+    });
   }
 
   increaseQuestionCounter() {
@@ -57,7 +39,7 @@ class QuizBodyState extends State {
 
   updateCounterText() {
     setState(() {
-      counterText = 'Frage ' + questionCounter.toString() + ' von 99:';
+      counterText = 'Frage ' + questionCounter.toString() + ' von ' + numberOfQuestions.toString() + ':';
     });
   }
 
@@ -67,8 +49,17 @@ class QuizBodyState extends State {
     });
   }
 
+  changeTexts() {
+    increaseQuestionCounter();
+    updateCounterText();
+    changeQuestionText();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final categoryHandler = ModalRoute.of(context)!.settings.arguments as CategoryHandler;
+    final category = categoryHandler.category;
+
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final questionWidth = screenWidth - 2 * questionPadding;
@@ -76,8 +67,18 @@ class QuizBodyState extends State {
     final buttonWidth = screenWidth / 2 - 2 * buttonPadding;
     final buttonHeight = buttonWidth / 2;
 
-    return Center(
-      child: Column(
+    final questions = QuestionCatcher.getQuestions(category);
+    setNumberOfQuestions(questions.length);
+    changeTexts();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Fragen - ' + CategoryHandler.getShortString(category)),
+        actions: <Widget>[
+          SettingsButton(),
+        ],
+      ),
+      body: Column(
         children: <Widget>[
           SizedBox(height: buttonPadding),
           Padding(
@@ -152,5 +153,5 @@ class QuizBodyState extends State {
       ),
     );
   }
-
 }
+

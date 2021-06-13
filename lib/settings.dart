@@ -3,6 +3,8 @@ import 'package:page_transition/page_transition.dart';
 
 
 class SettingsPage extends StatelessWidget {
+  static final routeName = '/settings';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +29,7 @@ class SettingsButton extends StatelessWidget {
       onPressed: () {
         Navigator.pushNamed(
           context,
-          '/settings',
+          SettingsPage.routeName,
           /*
           PageTransition(
             type: PageTransitionType.scale,

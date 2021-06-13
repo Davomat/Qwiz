@@ -9,6 +9,10 @@ enum Category {
 }
 
 class CategoryHandler {
+  Category category;
+
+  CategoryHandler(this.category);
+
   static String getFullString(Category category) {
     switch (category) {
       case Category.cosmos:       return 'Kosmos und Physik';

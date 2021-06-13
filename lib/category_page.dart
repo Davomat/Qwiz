@@ -8,6 +8,8 @@ import 'settings.dart';
 
 
 class CategoryPage extends StatelessWidget {
+  static final routeName = '/categories';
+
   final buttonPadding = 24.0;
   final buttonVerticalSpacing = 12.0;
   final buttonSideSpacing = 48.0;
@@ -83,7 +85,8 @@ class CategoryPage extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(
               context,
-              '/game',
+              QuizPage.routeName,
+              arguments: CategoryHandler(category),
               /*
               PageTransition(
                 type: PageTransitionType.fade,

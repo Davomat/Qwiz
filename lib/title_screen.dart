@@ -7,6 +7,8 @@ import 'settings.dart';
 
 
 class TitleScreen extends StatelessWidget {
+  static final routeName = '/';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,11 +16,11 @@ class TitleScreen extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
       ),
-      initialRoute: '/',
+      initialRoute: TitleScreen.routeName,
       routes: {
-        '/settings': (context) => SettingsPage(),
-        '/categories': (context) => CategoryPage(),
-        '/game': (context) => QuizPage(),
+        SettingsPage.routeName: (context) => SettingsPage(),
+        CategoryPage.routeName: (context) => CategoryPage(),
+        QuizPage.routeName: (context) => QuizPage(),
       },
       home: TitleScreenContent(),
     );
@@ -75,7 +77,7 @@ class TitleScreenContent extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
-                      '/categories',
+                      CategoryPage.routeName,
                       /*
                       PageTransition(
                         type: PageTransitionType.rightToLeftWithFade,
@@ -98,7 +100,7 @@ class TitleScreenContent extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(
                       context,
-                      '/settings',
+                      SettingsPage.routeName,
                       /*
                       PageTransition(
                         type: PageTransitionType.fade,
