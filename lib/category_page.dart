@@ -2,7 +2,7 @@ import 'package:code_labs/game.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
-import 'categories.dart';
+import 'category.dart';
 import 'question_catcher.dart';
 import 'settings.dart';
 
@@ -33,43 +33,43 @@ class CategoryPage extends StatelessWidget {
           ),
           SizedBox(height: buttonVerticalSpacing),
           SizedBox(height: buttonVerticalSpacing),
-          _insertButtonLeft(context, 'Kosmos und Physik', Category.cosmos),
+          _insertButtonLeft(context, Category.cosmos),
           SizedBox(height: buttonVerticalSpacing),
-          _insertButtonRight(context, 'Naturwissenschaften', Category.science),
+          _insertButtonRight(context, Category.science),
           SizedBox(height: buttonVerticalSpacing),
-          _insertButtonLeft(context, 'Technik / Ingenieurswissen', Category.technology),
+          _insertButtonLeft(context, Category.technology),
           SizedBox(height: buttonVerticalSpacing),
-          _insertButtonRight(context, 'Informatik / Programmierung', Category.programming),
+          _insertButtonRight(context, Category.programming),
           SizedBox(height: buttonVerticalSpacing),
-          _insertButtonLeft(context, 'Logik und Mathematik', Category.logic),
+          _insertButtonLeft(context, Category.logic),
           SizedBox(height: buttonVerticalSpacing),
-          _insertButtonRight(context, 'Ernährung und Fitness', Category.fitness),
+          _insertButtonRight(context, Category.health),
         ],
       ),
     );
   }
 
-  Widget _insertButtonLeft(BuildContext context, String buttonText, Category category) {
+  Widget _insertButtonLeft(BuildContext context, Category category) {
     return Padding(
       padding: EdgeInsets.only(right: buttonSideSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: _insertButtonWithInfo(context, buttonText, category),
+        children: _insertButtonWithInfo(context, category),
       ),
     );
   }
 
-  Widget _insertButtonRight(BuildContext context, String buttonText, Category category) {
+  Widget _insertButtonRight(BuildContext context, Category category) {
     return Padding(
       padding: EdgeInsets.only(left: buttonSideSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: _insertButtonWithInfo(context, buttonText, category),
+        children: _insertButtonWithInfo(context, category),
       ),
     );
   }
 
-  List<Widget> _insertButtonWithInfo(BuildContext context, String buttonText, Category category) {
+  List<Widget> _insertButtonWithInfo(BuildContext context, Category category) {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return [
@@ -77,7 +77,7 @@ class CategoryPage extends StatelessWidget {
         width: screenWidth - 2 * buttonPadding - buttonSideSpacing,
         child: ElevatedButton(
           child: Text(
-            buttonText,
+            CategoryHandler.getFullString(category),
             textScaleFactor: 1.25,
           ),
           onPressed: () {

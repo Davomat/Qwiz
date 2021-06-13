@@ -1,4 +1,4 @@
-import 'categories.dart';
+import 'category.dart';
 import 'question.dart';
 
 class QuestionCatcher {
@@ -14,7 +14,7 @@ class QuestionCatcher {
       case Category.technology:   return _getQuestionsAboutTechnology();
       case Category.programming:  return _getQuestionsAboutProgramming();
       case Category.logic:        return _getQuestionsAboutLogic();
-      case Category.fitness:      return _getQuestionsAboutFitness();
+      case Category.health:      return _getQuestionsAboutFitness();
       default:                    return new List<Question>.empty();
     }
   }

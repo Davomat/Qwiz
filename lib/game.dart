@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'categories.dart';
+import 'category.dart';
 import 'question.dart';
 import 'question_catcher.dart';
 import 'settings.dart';
@@ -13,9 +13,10 @@ class GamePage extends StatefulWidget {
 class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
+    final category = Category.cosmos;
     return Scaffold(
       appBar: AppBar(
-        title: Text('XXXXXXXXX'), // TODO
+        title: Text('Fragen - ' + CategoryHandler.getShortString(category)), // TODO
         actions: <Widget>[
           SettingsButton(),
         ],
