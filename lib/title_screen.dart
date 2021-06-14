@@ -45,7 +45,6 @@ class TitleScreenContent extends StatelessWidget {
     final copyrightHeight = copyrightWidth / 2;
 
     return Scaffold(
-      //appBar: AppBar(title: const Text('Welcome'),),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -59,14 +58,15 @@ class TitleScreenContent extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(height: 48.0),
+            SizedBox(height: logoPadding),
             Padding(
               padding: EdgeInsets.all(logoPadding),
               child: Image.asset(
                 'assets/Logo.png',
+                height: logoHeight,
+                width: logoWidth,
               ),
             ),
-            SizedBox(height: 0.0),
             Padding(
               padding: EdgeInsets.all(buttonPadding),
               child: SizedBox(
@@ -89,7 +89,6 @@ class TitleScreenContent extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 0.0),
             Padding(
               padding: EdgeInsets.all(buttonPadding),
               child: SizedBox(
@@ -112,8 +111,14 @@ class TitleScreenContent extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: screenHeight - logoHeight - 2 * logoPadding - 2 * buttonHeight - 8 * buttonPadding - copyrightHeight),
+            SizedBox(height: screenHeight
+                - logoHeight - 3 * logoPadding
+                - 2 * buttonHeight - 4 * buttonPadding
+                - copyrightHeight - 2 * buttonPadding
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Padding(
                   padding: EdgeInsets.fromLTRB(buttonPadding, buttonPadding, 0.0, buttonPadding),

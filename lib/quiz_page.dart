@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'category.dart';
@@ -19,7 +17,11 @@ class _QuizPageState extends State<QuizPage> {
   final questionPadding = 24.0;
   final buttonPadding = 12.0;
 
+  final appBarExtraCornerHeight = 72; // TODO height of corner radius
+
   int questionCounter = 0;
+  int currentScore = 0;
+  int possibleScore = 0;
   int numberOfQuestions = 0;
   String counterText = '';
   String questionText = '';
@@ -41,25 +43,11 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
-  List<String> myRandomAnswerList(Question q) {
-    final answers = List<String>.empty(growable: true);
-    final temp = List<String>.empty(growable: true);
-
-    temp.add(q.rightAnswer);
-    temp.add(q.wrongAnswer1);
-    temp.add(q.wrongAnswer2);
-    temp.add(q.wrongAnswer3);
-
-    answers.add(temp.removeAt(Random().nextInt(4)));
-    answers.add(temp.removeAt(Random().nextInt(3)));
-    answers.add(temp.removeAt(Random().nextInt(2)));
-    answers.add(temp.removeAt(0));
-
-    return answers;
-  }
-
-  increaseQuestionCounter() {
+  increaseCounter(String answerText) {
     setState(() {
+      if (answerText == questions.elementAt(questionCounter).rightAnswer)
+        currentScore++;
+      possibleScore++;
       questionCounter++;
     });
   }
@@ -69,7 +57,7 @@ class _QuizPageState extends State<QuizPage> {
       counterText = 'Frage ' + (questionCounter + 1).toString() + ' von ' + numberOfQuestions.toString() + ':';
       Question currentQuestion = questions.elementAt(questionCounter);
       questionText = currentQuestion.questionText;
-      List<String> answers = myRandomAnswerList(currentQuestion);
+      List<String> answers = QuestionCatcher.getRandomAnswerList(currentQuestion);
       answerText1 = answers.removeLast();
       answerText2 = answers.removeLast();
       answerText3 = answers.removeLast();
@@ -93,27 +81,25 @@ class _QuizPageState extends State<QuizPage> {
     setNumberOfQuestions();
     updateAllTexts(questions);
 
-    return Scaffold(
-      appBar: AppBar(
+    AppBar myAppBar() {
+      return AppBar(
         title: Text('Fragen - ' + CategoryHandler.getShortString(category)),
         actions: <Widget>[
           SettingsButton(),
         ],
-      ),
+      );
+    }
+
+    return Scaffold(
+      appBar: myAppBar(),
       body: Column(
         children: <Widget>[
-          SizedBox(height: buttonPadding),
           Padding(
             padding: EdgeInsets.all(questionPadding),
             child: SizedBox(
               width: questionWidth,
               height: questionHeight,
-              child: Center(
-                child: Text(
-                  counterText + '\n' + questionText,
-                  textScaleFactor: 1.5,
-                ),
-              ),
+              child: Text(counterText + '\n\n' + questionText, textScaleFactor: 1.5),
             ),
           ),
           Row(
@@ -125,7 +111,7 @@ class _QuizPageState extends State<QuizPage> {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => increaseQuestionCounter(),
+                  onPressed: () => increaseCounter(answerText1),
                   child: Text(answerText1),
                 ),
               ),
@@ -135,7 +121,7 @@ class _QuizPageState extends State<QuizPage> {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => increaseQuestionCounter(),
+                  onPressed: () => increaseCounter(answerText2),
                   child: Text(answerText2),
                 ),
               ),
@@ -150,7 +136,7 @@ class _QuizPageState extends State<QuizPage> {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => increaseQuestionCounter(),
+                  onPressed: () => increaseCounter(answerText3),
                   child: Text(answerText3),
                 ),
               ),
@@ -160,16 +146,35 @@ class _QuizPageState extends State<QuizPage> {
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(buttonWidth, buttonHeight),
                   ),
-                  onPressed: () => increaseQuestionCounter(),
+                  onPressed: () => increaseCounter(answerText4),
                   child: Text(answerText4),
                 ),
               ),
             ],
           ),
-          SizedBox(height: screenHeight - questionHeight - 2 * questionPadding - 2 * buttonHeight - 5 * buttonPadding - 192.0),
-          ElevatedButton(
-            child: Text('Abbruch'),
-            onPressed: () => Navigator.pop(context),
+          SizedBox(height: 2 * buttonPadding),
+          SizedBox(
+            height: buttonHeight / 2,
+            child: Text('Score: ' + currentScore.toString() + ' / ' + possibleScore.toString())
+          ),
+          SizedBox(height: screenHeight
+              - myAppBar().preferredSize.height
+              - questionHeight - 2 * questionPadding
+              - buttonHeight - 2 * buttonPadding
+              - buttonHeight - 2 * buttonPadding
+              - 0.5 * buttonHeight - 2 * buttonPadding
+              - 0.5 * buttonHeight - 2 * buttonPadding
+              - appBarExtraCornerHeight
+          ),
+          Padding(
+            padding: EdgeInsets.all(buttonPadding),
+            child: SizedBox(
+              height: buttonHeight / 2,
+              child: ElevatedButton(
+                child: Text('Abbruch'),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
           )
         ],
       ),

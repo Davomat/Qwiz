@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'category.dart';
 import 'question.dart';
 
@@ -7,6 +9,23 @@ class QuestionCatcher {
     return getQuestions(category).length;
   }
 
+  static List<String> getRandomAnswerList(Question q) {
+    final answers = List<String>.empty(growable: true);
+    final temp = List<String>.empty(growable: true);
+
+    temp.add(q.rightAnswer);
+    temp.add(q.wrongAnswer1);
+    temp.add(q.wrongAnswer2);
+    temp.add(q.wrongAnswer3);
+
+    answers.add(temp.removeAt(Random().nextInt(4)));
+    answers.add(temp.removeAt(Random().nextInt(3)));
+    answers.add(temp.removeAt(Random().nextInt(2)));
+    answers.add(temp.removeAt(0));
+
+    return answers;
+  }
+
   static List<Question> getQuestions(Category category) {
     switch (category) {
       case Category.cosmos:       return _getQuestionsAboutCosmos();
@@ -14,7 +33,7 @@ class QuestionCatcher {
       case Category.technology:   return _getQuestionsAboutTechnology();
       case Category.programming:  return _getQuestionsAboutProgramming();
       case Category.logic:        return _getQuestionsAboutLogic();
-      case Category.health:      return _getQuestionsAboutFitness();
+      case Category.health:       return _getQuestionsAboutFitness();
       default:                    return new List<Question>.empty();
     }
   }
