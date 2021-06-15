@@ -1,9 +1,8 @@
-import 'package:code_labs/quiz_page.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 import 'category.dart';
 import 'question_catcher.dart';
+import 'quiz_page.dart';
 import 'settings.dart';
 
 
@@ -34,17 +33,11 @@ class CategoryPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: buttonVerticalSpacing),
-          SizedBox(height: buttonVerticalSpacing),
           _insertButtonLeft(context, Category.cosmos),
-          SizedBox(height: buttonVerticalSpacing),
           _insertButtonRight(context, Category.science),
-          SizedBox(height: buttonVerticalSpacing),
           _insertButtonLeft(context, Category.technology),
-          SizedBox(height: buttonVerticalSpacing),
           _insertButtonRight(context, Category.programming),
-          SizedBox(height: buttonVerticalSpacing),
           _insertButtonLeft(context, Category.logic),
-          SizedBox(height: buttonVerticalSpacing),
           _insertButtonRight(context, Category.health),
         ],
       ),
@@ -53,7 +46,7 @@ class CategoryPage extends StatelessWidget {
 
   Widget _insertButtonLeft(BuildContext context, Category category) {
     return Padding(
-      padding: EdgeInsets.only(right: buttonSideSpacing),
+      padding: EdgeInsets.only(top: buttonVerticalSpacing, right: buttonSideSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: _insertButtonWithInfo(context, category),
@@ -63,7 +56,7 @@ class CategoryPage extends StatelessWidget {
 
   Widget _insertButtonRight(BuildContext context, Category category) {
     return Padding(
-      padding: EdgeInsets.only(left: buttonSideSpacing),
+      padding: EdgeInsets.only(top: buttonVerticalSpacing, left: buttonSideSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: _insertButtonWithInfo(context, category),

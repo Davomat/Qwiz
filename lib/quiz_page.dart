@@ -17,8 +17,6 @@ class _QuizPageState extends State<QuizPage> {
   final questionPadding = 24.0;
   final buttonPadding = 12.0;
 
-  final appBarExtraCornerHeight = 72; // TODO height of corner radius
-
   int questionCounter = 0;
   int currentScore = 0;
   int possibleScore = 0;
@@ -43,7 +41,7 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
-  increaseCounter(String answerText) {
+  checkAnswer(String answerText) {
     setState(() {
       if (answerText == questions.elementAt(questionCounter).rightAnswer)
         currentScore++;
@@ -70,6 +68,8 @@ class _QuizPageState extends State<QuizPage> {
     final categoryHandler = ModalRoute.of(context)!.settings.arguments as CategoryHandler;
     final category = categoryHandler.category;
 
+    final appBarHeight = AppBar().preferredSize.height;
+    final appBarPadding = MediaQuery.of(context).padding.top;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final questionWidth = screenWidth - 2 * questionPadding;
@@ -81,17 +81,27 @@ class _QuizPageState extends State<QuizPage> {
     setNumberOfQuestions();
     updateAllTexts(questions);
 
-    AppBar myAppBar() {
-      return AppBar(
-        title: Text('Fragen - ' + CategoryHandler.getShortString(category)),
-        actions: <Widget>[
-          SettingsButton(),
-        ],
+    Widget answerButton(String answerText) {
+      return Padding(
+        padding: EdgeInsets.all(buttonPadding),
+        child: SizedBox(
+          width: buttonWidth,
+          height: buttonHeight,
+          child: ElevatedButton(
+            onPressed: () => checkAnswer(answerText),
+            child: Text(answerText),
+          ),
+        ),
       );
     }
 
     return Scaffold(
-      appBar: myAppBar(),
+      appBar: AppBar(
+        title: Text('Fragen - ' + CategoryHandler.getShortString(category)),
+        actions: <Widget>[
+          SettingsButton(),
+        ],
+      ),
       body: Column(
         children: <Widget>[
           Padding(
@@ -103,53 +113,15 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(buttonPadding),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size(buttonWidth, buttonHeight),
-                  ),
-                  onPressed: () => increaseCounter(answerText1),
-                  child: Text(answerText1),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(buttonPadding),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size(buttonWidth, buttonHeight),
-                  ),
-                  onPressed: () => increaseCounter(answerText2),
-                  child: Text(answerText2),
-                ),
-              ),
+              answerButton(answerText1),
+              answerButton(answerText2),
             ],
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(buttonPadding),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size(buttonWidth, buttonHeight),
-                  ),
-                  onPressed: () => increaseCounter(answerText3),
-                  child: Text(answerText3),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(buttonPadding),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size(buttonWidth, buttonHeight),
-                  ),
-                  onPressed: () => increaseCounter(answerText4),
-                  child: Text(answerText4),
-                ),
-              ),
+              answerButton(answerText3),
+              answerButton(answerText4),
             ],
           ),
           SizedBox(height: 2 * buttonPadding),
@@ -158,13 +130,13 @@ class _QuizPageState extends State<QuizPage> {
             child: Text('Score: ' + currentScore.toString() + ' / ' + possibleScore.toString())
           ),
           SizedBox(height: screenHeight
-              - myAppBar().preferredSize.height
+              - appBarPadding
+              - appBarHeight
               - questionHeight - 2 * questionPadding
               - buttonHeight - 2 * buttonPadding
               - buttonHeight - 2 * buttonPadding
               - 0.5 * buttonHeight - 2 * buttonPadding
               - 0.5 * buttonHeight - 2 * buttonPadding
-              - appBarExtraCornerHeight
           ),
           Padding(
             padding: EdgeInsets.all(buttonPadding),
@@ -175,7 +147,7 @@ class _QuizPageState extends State<QuizPage> {
                 onPressed: () => Navigator.pop(context),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
