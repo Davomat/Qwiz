@@ -14,9 +14,12 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final questionPadding = 24.0;
+  final questionPadding = 12.0;
   final buttonPadding = 12.0;
+  final questionTextScaleFactor = 1.4;
 
+  bool answerButtonsAreEnabled = true;
+  bool nextButtonIsEnabled = false;
   int questionCounter = 0;
   int currentScore = 0;
   int possibleScore = 0;
@@ -43,10 +46,19 @@ class _QuizPageState extends State<QuizPage> {
 
   checkAnswer(String answerText) {
     setState(() {
+      answerButtonsAreEnabled = false;
       if (answerText == questions.elementAt(questionCounter).rightAnswer)
         currentScore++;
       possibleScore++;
+      nextButtonIsEnabled = true;
+    });
+  }
+
+  nextQuestion() {
+    setState(() {
+      nextButtonIsEnabled = false;
       questionCounter++;
+      answerButtonsAreEnabled = true;
     });
   }
 
@@ -73,7 +85,7 @@ class _QuizPageState extends State<QuizPage> {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final questionWidth = screenWidth - 2 * questionPadding;
-    final questionHeight = questionWidth / 2;
+    final questionHeight = 3 * questionWidth / 8;
     final buttonWidth = screenWidth / 2 - 2 * buttonPadding;
     final buttonHeight = buttonWidth / 2;
 
@@ -88,7 +100,7 @@ class _QuizPageState extends State<QuizPage> {
           width: buttonWidth,
           height: buttonHeight,
           child: ElevatedButton(
-            onPressed: () => checkAnswer(answerText),
+            onPressed: answerButtonsAreEnabled ? () => checkAnswer(answerText) : null,
             child: Text(answerText),
           ),
         ),
@@ -109,7 +121,7 @@ class _QuizPageState extends State<QuizPage> {
             child: SizedBox(
               width: questionWidth,
               height: questionHeight,
-              child: Text(counterText + '\n\n' + questionText, textScaleFactor: 1.5),
+              child: Text(counterText + '\n\n' + questionText, textScaleFactor: questionTextScaleFactor),
             ),
           ),
           Row(
@@ -124,7 +136,7 @@ class _QuizPageState extends State<QuizPage> {
               answerButton(answerText4),
             ],
           ),
-          SizedBox(height: 2 * buttonPadding),
+          SizedBox(height: buttonPadding),
           SizedBox(
             height: buttonHeight / 2,
             child: Text('Score: ' + currentScore.toString() + ' / ' + possibleScore.toString())
@@ -135,18 +147,38 @@ class _QuizPageState extends State<QuizPage> {
               - questionHeight - 2 * questionPadding
               - buttonHeight - 2 * buttonPadding
               - buttonHeight - 2 * buttonPadding
-              - 0.5 * buttonHeight - 2 * buttonPadding
+              - 0.5 * buttonHeight - buttonPadding
               - 0.5 * buttonHeight - 2 * buttonPadding
           ),
-          Padding(
-            padding: EdgeInsets.all(buttonPadding),
-            child: SizedBox(
-              height: buttonHeight / 2,
-              child: ElevatedButton(
-                child: Text('Abbruch'),
-                onPressed: () => Navigator.pop(context),
+          Row(
+            children: <Widget>[
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: EdgeInsets.all(buttonPadding),
+                  child: SizedBox(
+                    height: buttonHeight / 2,
+                    child: ElevatedButton(
+                      child: Text('Weiter'),
+                      onPressed: nextButtonIsEnabled ? () => nextQuestion() : null,
+                    ),
+                  ),
+                ),
               ),
-            ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.all(buttonPadding),
+                  child: SizedBox(
+                    height: buttonHeight / 2,
+                    child: ElevatedButton(
+                      child: Text('Abbruch'),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

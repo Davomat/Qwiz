@@ -50,14 +50,14 @@ class TitleScreenContent extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
+            colors: <Color>[
               Colors.lightGreen.shade400,
               Colors.white,
             ],
           ),
         ),
         child: Column(
-          children: [
+          children: <Widget>[
             SizedBox(height: logoPadding),
             Padding(
               padding: EdgeInsets.all(logoPadding),
@@ -119,7 +119,7 @@ class TitleScreenContent extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
+              children: <Widget>[
                 Padding(
                   padding: EdgeInsets.fromLTRB(buttonPadding, buttonPadding, 0.0, buttonPadding),
                   child: SizedBox(
@@ -127,7 +127,7 @@ class TitleScreenContent extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: <Widget>[
                         Text('made with:'),
                         SizedBox(height: innerMadePadding),
                         Text('made by:'),
@@ -143,16 +143,16 @@ class TitleScreenContent extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: <Widget>[
                         Row(
-                          children: [
+                          children: <Widget>[
                             FlutterLogo(size: madeLogosSize),
                             Text(' Flutter / Dart'),
                           ],
                         ),
                         SizedBox(height: innerMadePadding),
                         Row(
-                          children: [
+                          children: <Widget>[
                             Image.asset('assets/D.png', height: madeLogosSize,),
                             Text(' Daveloper - \u00a9 David Lange'),
                           ],
