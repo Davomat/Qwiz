@@ -33,6 +33,7 @@ class _QuizPageState extends State<QuizPage> {
   String answerText2 = '';
   String answerText3 = '';
   String answerText4 = '';
+  String infoText = '';
   Color buttonColor1 = Colors.lightGreen;
   Color buttonColor2 = Colors.lightGreen;
   Color buttonColor3 = Colors.lightGreen;
@@ -56,8 +57,9 @@ class _QuizPageState extends State<QuizPage> {
       answerButtonsAreEnabled = false;
       if (answerText == questions.elementAt(questionCounter).rightAnswer)
         currentScore++;
-      setButtonColors(answerText);
       possibleScore++;
+      setButtonColors(answerText);
+      infoText = questions.elementAt(questionCounter).additionalInformation;
       nextButtonIsEnabled = true;
     });
   }
@@ -86,6 +88,7 @@ class _QuizPageState extends State<QuizPage> {
     setState(() {
       nextButtonIsEnabled = false;
       resetButtonColors();
+      infoText = '';
       questionCounter++;
       answerButtonsAreEnabled = true;
     });
@@ -173,10 +176,20 @@ class _QuizPageState extends State<QuizPage> {
               answerButton(answerText4, buttonColor4),
             ],
           ),
-          SizedBox(height: buttonPadding),
-          SizedBox(
-            height: buttonHeight / 2,
-            child: Text('Score: ' + currentScore.toString() + ' / ' + possibleScore.toString())
+          Padding(
+            padding: EdgeInsets.all(buttonPadding),
+            child: SizedBox(
+              height: buttonHeight / 4,
+              child: Text('Score: ' + currentScore.toString() + ' / ' + possibleScore.toString())
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(buttonPadding),
+            child: SizedBox(
+              height: buttonHeight,
+              width: screenWidth - 2 * buttonPadding,
+              child: Text(infoText),
+            ),
           ),
           SizedBox(height: screenHeight
               - appBarPadding
@@ -184,7 +197,8 @@ class _QuizPageState extends State<QuizPage> {
               - questionHeight - 2 * questionPadding
               - buttonHeight - 2 * buttonPadding
               - buttonHeight - 2 * buttonPadding
-              - 0.5 * buttonHeight - buttonPadding
+              - 0.25 * buttonHeight - buttonPadding
+              - buttonHeight - 3 * buttonPadding
               - 0.5 * buttonHeight - 2 * buttonPadding
           ),
           Row(
