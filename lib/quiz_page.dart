@@ -17,6 +17,9 @@ class _QuizPageState extends State<QuizPage> {
   final questionPadding = 12.0;
   final buttonPadding = 12.0;
   final questionTextScaleFactor = 1.4;
+  final unClickedColor = Colors.grey.shade300;
+  final wrongClickedColor = Colors.redAccent.shade200;
+  final rightClickedColor = Colors.green;
 
   bool answerButtonsAreEnabled = true;
   bool nextButtonIsEnabled = false;
@@ -30,6 +33,10 @@ class _QuizPageState extends State<QuizPage> {
   String answerText2 = '';
   String answerText3 = '';
   String answerText4 = '';
+  Color buttonColor1 = Colors.lightGreen;
+  Color buttonColor2 = Colors.lightGreen;
+  Color buttonColor3 = Colors.lightGreen;
+  Color buttonColor4 = Colors.lightGreen;
   List<Question> questions = List.empty();
 
   setNumberOfQuestions() {
@@ -49,14 +56,36 @@ class _QuizPageState extends State<QuizPage> {
       answerButtonsAreEnabled = false;
       if (answerText == questions.elementAt(questionCounter).rightAnswer)
         currentScore++;
+      setButtonColors(answerText);
       possibleScore++;
       nextButtonIsEnabled = true;
     });
   }
 
-  nextQuestion() {
+  setButtonColors(String answerText) {
+    setState(() {
+      buttonColor1 = buttonColor2 = buttonColor3 = buttonColor4 = unClickedColor;
+      if (answerText1 == answerText) buttonColor1 = wrongClickedColor;
+      if (answerText2 == answerText) buttonColor2 = wrongClickedColor;
+      if (answerText3 == answerText) buttonColor3 = wrongClickedColor;
+      if (answerText4 == answerText) buttonColor4 = wrongClickedColor;
+      if (answerText1 == questions.elementAt(questionCounter).rightAnswer) buttonColor1 = rightClickedColor;
+      if (answerText2 == questions.elementAt(questionCounter).rightAnswer) buttonColor2 = rightClickedColor;
+      if (answerText3 == questions.elementAt(questionCounter).rightAnswer) buttonColor3 = rightClickedColor;
+      if (answerText4 == questions.elementAt(questionCounter).rightAnswer) buttonColor4 = rightClickedColor;
+    });
+  }
+
+  resetButtonColors() {
+    setState(() {
+      buttonColor1 = buttonColor2 = buttonColor3 = buttonColor4 = Colors.lightGreen;
+    });
+  }
+
+  getNextQuestion() {
     setState(() {
       nextButtonIsEnabled = false;
+      resetButtonColors();
       questionCounter++;
       answerButtonsAreEnabled = true;
     });
@@ -89,22 +118,30 @@ class _QuizPageState extends State<QuizPage> {
     final buttonWidth = screenWidth / 2 - 2 * buttonPadding;
     final buttonHeight = buttonWidth / 2;
 
-    setQuestions(QuestionCatcher.getQuestions(category));
-    setNumberOfQuestions();
-    updateAllTexts(questions);
-
-    Widget answerButton(String answerText) {
+    Widget answerButton(String answerText, Color buttonColor) {
       return Padding(
         padding: EdgeInsets.all(buttonPadding),
         child: SizedBox(
           width: buttonWidth,
           height: buttonHeight,
           child: ElevatedButton(
-            onPressed: answerButtonsAreEnabled ? () => checkAnswer(answerText) : null,
+            style: ElevatedButton.styleFrom(
+              primary: buttonColor,
+            ),
+            onPressed: () {
+              if (answerButtonsAreEnabled)
+                checkAnswer(answerText);
+            },
             child: Text(answerText),
           ),
         ),
       );
+    }
+
+    if (answerButtonsAreEnabled) {
+      setQuestions(QuestionCatcher.getQuestions(category));
+      setNumberOfQuestions();
+      updateAllTexts(questions);
     }
 
     return Scaffold(
@@ -126,14 +163,14 @@ class _QuizPageState extends State<QuizPage> {
           ),
           Row(
             children: <Widget>[
-              answerButton(answerText1),
-              answerButton(answerText2),
+              answerButton(answerText1, buttonColor1),
+              answerButton(answerText2, buttonColor2),
             ],
           ),
           Row(
             children: <Widget>[
-              answerButton(answerText3),
-              answerButton(answerText4),
+              answerButton(answerText3, buttonColor3),
+              answerButton(answerText4, buttonColor4),
             ],
           ),
           SizedBox(height: buttonPadding),
@@ -160,7 +197,7 @@ class _QuizPageState extends State<QuizPage> {
                     height: buttonHeight / 2,
                     child: ElevatedButton(
                       child: Text('Weiter'),
-                      onPressed: nextButtonIsEnabled ? () => nextQuestion() : null,
+                      onPressed: nextButtonIsEnabled ? () => getNextQuestion() : null,
                     ),
                   ),
                 ),
