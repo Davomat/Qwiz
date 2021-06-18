@@ -1,8 +1,10 @@
+import 'package:code_labs/score.dart';
 import 'package:flutter/material.dart';
 
 import 'category.dart';
 import 'question.dart';
 import 'question_catcher.dart';
+import 'score.dart';
 import 'settings.dart';
 
 
@@ -24,8 +26,7 @@ class _QuizPageState extends State<QuizPage> {
   bool answerButtonsAreEnabled = true;
   bool nextButtonIsEnabled = false;
   int questionCounter = 0;
-  int currentScore = 0;
-  int possibleScore = 0;
+  Score score = Score();
   int numberOfQuestions = 0;
   String counterText = '';
   String questionText = '';
@@ -55,9 +56,7 @@ class _QuizPageState extends State<QuizPage> {
   checkAnswer(String answerText) {
     setState(() {
       answerButtonsAreEnabled = false;
-      if (answerText == questions.elementAt(questionCounter).rightAnswer)
-        currentScore++;
-      possibleScore++;
+      score.increase(answerText == questions.elementAt(questionCounter).rightAnswer);
       setButtonColors(answerText);
       infoText = questions.elementAt(questionCounter).additionalInformation;
       nextButtonIsEnabled = true;
@@ -180,7 +179,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(buttonPadding),
             child: SizedBox(
               height: buttonHeight / 4,
-              child: Text('Score: ' + currentScore.toString() + ' / ' + possibleScore.toString())
+              child: Text('Score: ' + score.value.toString() + ' / ' + score.maxValue.toString())
             ),
           ),
           Padding(
