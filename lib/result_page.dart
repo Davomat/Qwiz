@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'category_page.dart';
 import 'score.dart';
 import 'settings.dart';
+import 'title_screen.dart';
 
 
 class ResultPage extends StatefulWidget {
@@ -13,17 +14,20 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
+  final innerMadePadding = TitleScreenContent.innerMadePadding;
+  final madeLogosSize = TitleScreenContent.madeLogosSize;
+  final outerPadding = TitleScreenContent.outerPadding;
   final generalPadding = 24.0;
 
   getAsset(Score score) {
     String asset = '';
     double percentage = score.value.toDouble() / score.maxValue.toDouble();
 
-    if (percentage < 0.5)
+    if (percentage < 0.4)
       asset = 'assets/AtLeastYouTried.png';
-    else if (percentage < 0.8)
+    else if (percentage < 0.7)
       asset = 'assets/ThumbsUp.gif';
-    else if (percentage < 0.95)
+    else if (percentage < 0.9)
       asset = 'assets/Proud.gif';
     else
       asset = 'assets/Cheers.gif';
@@ -34,15 +38,15 @@ class _ResultPageState extends State<ResultPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // TODO - outer Padding
     final score = ModalRoute.of(context)!.settings.arguments as Score;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( // TODO - kein zurück Button
         title: Text('Ergebnis'),
-        actions: <Widget>[
+        actions: [
           SettingsButton(),
         ],
       ),
@@ -60,37 +64,38 @@ class _ResultPageState extends State<ResultPage> {
           ),
         ),
         child: Column(
-          children: <Widget>[
-            SizedBox(height: generalPadding),
-            Padding(
-              padding: EdgeInsets.all(generalPadding),
-              child: Text(
-                  'Dein Score:',
-                  textScaleFactor: 1.5,
-              ),
-            ),
-            Text(
-              score.value.toString() + ' / ' + score.maxValue.toString(),
-              textScaleFactor: 2.0,
-            ),
-            Padding(
-              padding: EdgeInsets.all(generalPadding),
-              child: getAsset(score),
-            ),
-            Padding(
-              padding: EdgeInsets.all(generalPadding),
-              child: SizedBox(
-                child: ElevatedButton(
-                  child: Text('Zurück', textScaleFactor: 1.25,),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      CategoryPage.routeName,
-                    );
-                  },
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                SizedBox(height: generalPadding),
+                Padding(
+                  padding: EdgeInsets.all(generalPadding),
+                  child: Text(
+                      'Dein Score:',
+                      textScaleFactor: 1.5,
+                  ),
                 ),
-              ),
+                Text(
+                  score.value.toString() + ' / ' + score.maxValue.toString(),
+                  textScaleFactor: 2.0,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(generalPadding),
+                  child: getAsset(score),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(generalPadding),
+                  child: SizedBox(
+                    child: ElevatedButton(
+                      child: Text('Zurück', textScaleFactor: 1.25,),
+                      onPressed: () => Navigator.popUntil(context, ModalRoute.withName(CategoryPage.routeName)),
+                    ),
+                  ),
+                ),
+              ],
             ),
+            TitleScreenContent.copyrightBlock(),
           ],
         ),
       ),

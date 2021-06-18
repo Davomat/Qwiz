@@ -18,13 +18,13 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Kategorie-Auswahl'),
-        actions: <Widget>[
+        actions: [
           SettingsButton(),
         ],
       ),
       body: ListView(
         padding: EdgeInsets.all(buttonPadding),
-        children: <Widget>[
+        children: [
           SizedBox(height: buttonVerticalSpacing),
           Center(
             child: Text(
