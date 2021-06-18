@@ -1,9 +1,9 @@
-import 'package:code_labs/score.dart';
 import 'package:flutter/material.dart';
 
 import 'category.dart';
 import 'question.dart';
 import 'question_catcher.dart';
+import 'result_page.dart';
 import 'score.dart';
 import 'settings.dart';
 
@@ -19,7 +19,7 @@ class _QuizPageState extends State<QuizPage> {
   final questionPadding = 12.0;
   final buttonPadding = 12.0;
   final questionTextScaleFactor = 1.4;
-  final unClickedColor = Colors.grey.shade300;
+  final unClickedColor = Colors.grey.shade400;
   final wrongClickedColor = Colors.redAccent.shade200;
   final rightClickedColor = Colors.green;
 
@@ -41,15 +41,15 @@ class _QuizPageState extends State<QuizPage> {
   Color buttonColor4 = Colors.lightGreen;
   List<Question> questions = List.empty();
 
-  setNumberOfQuestions() {
-    setState(() {
-      numberOfQuestions = questions.length;
-    });
-  }
-
   setQuestions(List<Question> listOfQuestions) {
     setState(() {
       questions = listOfQuestions;
+    });
+  }
+
+  setNumberOfQuestions() {
+    setState(() {
+      numberOfQuestions = questions.length;
     });
   }
 
@@ -85,11 +85,20 @@ class _QuizPageState extends State<QuizPage> {
 
   getNextQuestion() {
     setState(() {
-      nextButtonIsEnabled = false;
-      resetButtonColors();
-      infoText = '';
-      questionCounter++;
-      answerButtonsAreEnabled = true;
+      if (questionCounter < numberOfQuestions - 1) {
+        nextButtonIsEnabled = false;
+        resetButtonColors();
+        infoText = '';
+        questionCounter++;
+        answerButtonsAreEnabled = true;
+      }
+      else {
+        Navigator.pushNamed(
+          context,
+          ResultPage.routeName,
+          arguments: score,
+        );
+      }
     });
   }
 
@@ -106,6 +115,26 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
+  Widget answerButton(String answerText, Color buttonColor, double buttonWidth, double buttonHeight) {
+    return Padding(
+      padding: EdgeInsets.all(buttonPadding),
+      child: SizedBox(
+        width: buttonWidth,
+        height: buttonHeight,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: buttonColor,
+          ),
+          onPressed: () {
+            if (answerButtonsAreEnabled)
+              checkAnswer(answerText);
+          },
+          child: Text(answerText),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final categoryHandler = ModalRoute.of(context)!.settings.arguments as CategoryHandler;
@@ -119,26 +148,6 @@ class _QuizPageState extends State<QuizPage> {
     final questionHeight = 3 * questionWidth / 8;
     final buttonWidth = screenWidth / 2 - 2 * buttonPadding;
     final buttonHeight = buttonWidth / 2;
-
-    Widget answerButton(String answerText, Color buttonColor) {
-      return Padding(
-        padding: EdgeInsets.all(buttonPadding),
-        child: SizedBox(
-          width: buttonWidth,
-          height: buttonHeight,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: buttonColor,
-            ),
-            onPressed: () {
-              if (answerButtonsAreEnabled)
-                checkAnswer(answerText);
-            },
-            child: Text(answerText),
-          ),
-        ),
-      );
-    }
 
     if (answerButtonsAreEnabled) {
       setQuestions(QuestionCatcher.getQuestions(category));
@@ -165,21 +174,21 @@ class _QuizPageState extends State<QuizPage> {
           ),
           Row(
             children: <Widget>[
-              answerButton(answerText1, buttonColor1),
-              answerButton(answerText2, buttonColor2),
+              answerButton(answerText1, buttonColor1, buttonWidth, buttonHeight),
+              answerButton(answerText2, buttonColor2, buttonWidth, buttonHeight),
             ],
           ),
           Row(
             children: <Widget>[
-              answerButton(answerText3, buttonColor3),
-              answerButton(answerText4, buttonColor4),
+              answerButton(answerText3, buttonColor3, buttonWidth, buttonHeight),
+              answerButton(answerText4, buttonColor4, buttonWidth, buttonHeight),
             ],
           ),
           Padding(
             padding: EdgeInsets.all(buttonPadding),
             child: SizedBox(
               height: buttonHeight / 4,
-              child: Text('Score: ' + score.value.toString() + ' / ' + score.maxValue.toString())
+              child: Text('Score: ' + score.value.toString() + ' / ' + score.maxValue.toString()),
             ),
           ),
           Padding(

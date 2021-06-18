@@ -1,8 +1,8 @@
-import 'package:code_labs/quiz_page.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
 
 import 'category_page.dart';
+import 'quiz_page.dart';
+import 'result_page.dart';
 import 'settings.dart';
 
 
@@ -21,6 +21,7 @@ class TitleScreen extends StatelessWidget {
         SettingsPage.routeName: (context) => SettingsPage(),
         CategoryPage.routeName: (context) => CategoryPage(),
         QuizPage.routeName: (context) => QuizPage(),
+        ResultPage.routeName: (context) => ResultPage(),
       },
       home: TitleScreenContent(),
     );
