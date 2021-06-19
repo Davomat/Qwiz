@@ -29,7 +29,6 @@ class TitleScreen extends StatelessWidget {
 }
 
 class TitleScreenContent extends StatelessWidget {
-  final logoPadding = 48.0;
   static final outerPadding = 24.0;
   static final innerMadePadding = 12.0;
   static final madeLogosSize = 16.0;
@@ -37,49 +36,43 @@ class TitleScreenContent extends StatelessWidget {
   static Widget copyrightBlock() {
     return Row(
       children: [
-        Padding(
-          padding: EdgeInsets.fromLTRB(outerPadding, outerPadding, 0.0, outerPadding),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('made with:'),
-              SizedBox(height: innerMadePadding),
-              Text('made by:'),
-            ],
-          ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('made with:'),
+            SizedBox(height: innerMadePadding),
+            Text('made by:'),
+          ],
         ),
         SizedBox(width: innerMadePadding),
-        Padding(
-          padding: EdgeInsets.fromLTRB(0.0, outerPadding, outerPadding, outerPadding),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  FlutterLogo(size: madeLogosSize),
-                  Text(' Flutter / Dart'),
-                ],
-              ),
-              SizedBox(height: innerMadePadding),
-              Row(
-                children: [
-                  Image.asset('assets/D.png', height: madeLogosSize,),
-                  Text(' Daveloper - \u00a9 David Lange'),
-                ],
-              ),
-            ],
-          ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                FlutterLogo(size: madeLogosSize),
+                Text(' Flutter / Dart'),
+              ],
+            ),
+            SizedBox(height: innerMadePadding),
+            Row(
+              children: [
+                Image.asset('assets/D.png', height: madeLogosSize,),
+                Text(' Daveloper - \u00a9 David Lange'),
+              ],
+            ),
+          ],
         )
       ],
     );
   }
 
   @override
-  Widget build(BuildContext context) { // TODO - outer Padding
+  Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final logoWidth = screenWidth - 2 * logoPadding;
+    final logoWidth = screenWidth - 4 * outerPadding;
     final logoHeight = logoWidth / 2;
     final buttonWidth = screenWidth - 2 * outerPadding;
     final buttonHeight = buttonWidth / 8;
@@ -96,23 +89,24 @@ class TitleScreenContent extends StatelessWidget {
             ],
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                SizedBox(height: logoPadding),
-                Padding(
-                  padding: EdgeInsets.all(logoPadding),
-                  child: Image.asset(
-                    'assets/Logo.png',
-                    height: logoHeight,
-                    width: logoWidth,
+        child: Padding(
+          padding: EdgeInsets.all(outerPadding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  SizedBox(height: 2 * outerPadding),
+                  Padding(
+                    padding: EdgeInsets.all(outerPadding),
+                    child: Image.asset(
+                      'assets/Logo.png',
+                      height: logoHeight,
+                      width: logoWidth,
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(outerPadding),
-                  child: SizedBox(
+                  SizedBox(height: 2 * outerPadding),
+                  SizedBox(
                     width: buttonWidth,
                     height: buttonHeight,
                     child: ElevatedButton(
@@ -125,10 +119,8 @@ class TitleScreenContent extends StatelessWidget {
                       },
                     ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(outerPadding),
-                  child: SizedBox(
+                  SizedBox(height: 2 * outerPadding),
+                  SizedBox(
                     width: buttonWidth,
                     height: buttonHeight,
                     child: TextButton(
@@ -141,11 +133,11 @@ class TitleScreenContent extends StatelessWidget {
                       },
                     ),
                   ),
-                ),
-              ],
-            ),
-            copyrightBlock(),
-          ],
+                ],
+              ),
+              copyrightBlock(),
+            ],
+          ),
         ),
       ),
     );

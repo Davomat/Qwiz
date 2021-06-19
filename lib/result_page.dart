@@ -14,10 +14,7 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
-  final innerMadePadding = TitleScreenContent.innerMadePadding;
-  final madeLogosSize = TitleScreenContent.madeLogosSize;
-  final outerPadding = TitleScreenContent.outerPadding;
-  final generalPadding = 24.0;
+  final outerPadding = 24.0;
 
   getAsset(Score score) {
     String asset = '';
@@ -38,7 +35,7 @@ class _ResultPageState extends State<ResultPage> {
   }
 
   @override
-  Widget build(BuildContext context) { // TODO - outer Padding
+  Widget build(BuildContext context) {
     final score = ModalRoute.of(context)!.settings.arguments as Score;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
@@ -63,40 +60,37 @@ class _ResultPageState extends State<ResultPage> {
             ],
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                SizedBox(height: generalPadding),
-                Padding(
-                  padding: EdgeInsets.all(generalPadding),
-                  child: Text(
+        child: Padding(
+          padding: EdgeInsets.all(outerPadding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                children: [
+                  SizedBox(height: outerPadding),
+                  Text(
                       'Dein Score:',
                       textScaleFactor: 1.5,
                   ),
-                ),
-                Text(
-                  score.value.toString() + ' / ' + score.maxValue.toString(),
-                  textScaleFactor: 2.0,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(generalPadding),
-                  child: getAsset(score),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(generalPadding),
-                  child: SizedBox(
+                  SizedBox(height: outerPadding / 4),
+                  Text(
+                    score.value.toString() + ' / ' + score.maxValue.toString(),
+                    textScaleFactor: 2.0,
+                  ),
+                  SizedBox(height: 1.25 * outerPadding),
+                  getAsset(score),
+                  SizedBox(height: 1.25 * outerPadding),
+                  SizedBox(
                     child: ElevatedButton(
-                      child: Text('Zurück', textScaleFactor: 1.25,),
+                      child: Text('Zur Kategorie-Auswahl', textScaleFactor: 1.25,),
                       onPressed: () => Navigator.popUntil(context, ModalRoute.withName(CategoryPage.routeName)),
                     ),
                   ),
-                ),
-              ],
-            ),
-            TitleScreenContent.copyrightBlock(),
-          ],
+                ],
+              ),
+              TitleScreenContent.copyrightBlock(),
+            ],
+          ),
         ),
       ),
     );

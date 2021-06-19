@@ -33,7 +33,7 @@ class QuestionCatcher {
       case Category.technology:   return _getQuestionsAboutTechnology();
       case Category.programming:  return _getQuestionsAboutProgramming();
       case Category.logic:        return _getQuestionsAboutLogic();
-      case Category.health:       return _getQuestionsAboutFitness();
+      case Category.health:       return _getQuestionsAboutHealth();
       default:                    return new List<Question>.empty();
     }
   }
@@ -52,7 +52,7 @@ class QuestionCatcher {
     questions.add(qAgeOfCosmos);
 
     final qHeavyElements = Question(
-      questionText: 'Wie bzw. wann entstanden die ersten schweren Elemente wie bspw. Silizium, die wir heute auf der Erde finden?',
+      questionText: 'Wie / Wann entstanden die schweren Elemente wie z.B. Gold oder Platin, die wir heute auf der Erde vorfinden?',
       rightAnswer:  'bei Supernovae (Sternentode)',
       wrongAnswer1: 'direkt nach dem Urknall',
       wrongAnswer2: 'beim Zusammenprall der Ur-Erde mit Mond',
@@ -138,7 +138,7 @@ class QuestionCatcher {
     questions.add(qSunTemperature);
 
     final qEndOfSun = Question(
-      questionText: 'Was wird aus der Sonne, nachdem ihr <b>Helium</b> vollständig verbraucht ist?',
+      questionText: 'Was wird aus der Sonne, nachdem ihr HELIUM vollständig verbraucht ist?',
       rightAnswer:  'ein weißer Zwerg',
       wrongAnswer1: 'ein roter Zwerg',
       wrongAnswer2: 'ein brauner Zwerg',
@@ -173,7 +173,7 @@ class QuestionCatcher {
       wrongAnswer1:  '3 m',
       wrongAnswer2:  '1 km',
       wrongAnswer3: '90 km',
-      additionalInformation: 'Bei statischen Schwarzen Löchern ist der Ereignishorizont eine Kugeloberfläche, deren Radius <i>Schwarzschild-Radius</i> genannt wird.',
+      additionalInformation: 'Bei statischen Schwarzen Löchern ist der Ereignishorizont eine Kugeloberfläche, deren Radius \'Schwarzschild-Radius\' genannt wird.',
     );
     questions.add(qBlackHoleSize);
 
@@ -576,7 +576,7 @@ class QuestionCatcher {
   }
 
 
-  static List<Question> _getQuestionsAboutFitness() {
+  static List<Question> _getQuestionsAboutHealth() {
     final questions = new List<Question>.empty(growable: true);
 
     final qVitaminD = Question(
@@ -598,8 +598,8 @@ class QuestionCatcher {
     questions.add(qStrongestMuscle);
 
     final qToothPaste = Question(
-      questionText: 'Wofür ist das Flourid in Zahnpasta?',
-      rightAnswer:  'Füllen beschädigter Stellen am Zahn',
+      questionText: 'Wofür ist das Fluorid in Zahnpasta?',
+      rightAnswer:  'Füllen beschädigter atomarer Stellen am Zahn', // TODO besser beschreiben, iwas mit aushärten
       wrongAnswer1: 'Vorbeuge gegen Zahnstein',
       wrongAnswer2: 'Bekämpfung von Bakterien und Zahnbelag',
       wrongAnswer3: 'Pflege und Stärkung des Zahnfleischs',

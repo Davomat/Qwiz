@@ -9,9 +9,8 @@ import 'settings.dart';
 class CategoryPage extends StatelessWidget {
   static final routeName = '/categories';
 
-  final buttonPadding = 24.0;
-  final buttonVerticalSpacing = 12.0;
-  final buttonSideSpacing = 48.0;
+  final outerPadding = 24.0;
+  final buttonVerticalSpacing = 16.0;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class CategoryPage extends StatelessWidget {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.all(buttonPadding),
+        padding: EdgeInsets.all(outerPadding),
         children: [
           SizedBox(height: buttonVerticalSpacing),
           Center(
@@ -46,7 +45,7 @@ class CategoryPage extends StatelessWidget {
 
   Widget _insertButtonLeft(BuildContext context, Category category) {
     return Padding(
-      padding: EdgeInsets.only(top: buttonVerticalSpacing, right: buttonSideSpacing),
+      padding: EdgeInsets.only(top: buttonVerticalSpacing, right: 2 * outerPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: _insertButtonWithInfo(context, category),
@@ -56,7 +55,7 @@ class CategoryPage extends StatelessWidget {
 
   Widget _insertButtonRight(BuildContext context, Category category) {
     return Padding(
-      padding: EdgeInsets.only(top: buttonVerticalSpacing, left: buttonSideSpacing),
+      padding: EdgeInsets.only(top: buttonVerticalSpacing, left: 2 * outerPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: _insertButtonWithInfo(context, category),
@@ -66,10 +65,11 @@ class CategoryPage extends StatelessWidget {
 
   List<Widget> _insertButtonWithInfo(BuildContext context, Category category) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final buttonWidth = screenWidth - 4 * outerPadding;
 
     return [
       SizedBox(
-        width: screenWidth - 2 * buttonPadding - buttonSideSpacing,
+        width: buttonWidth,
         child: ElevatedButton(
           child: Text(
             CategoryHandler.getFullString(category),
