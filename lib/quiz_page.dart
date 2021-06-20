@@ -16,8 +16,6 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final outerPadding = 12.0;
-  final innerPadding = 18.0;
   final questionTextScaleFactor = 1.4;
   final unClickedColor = Colors.grey.shade400;
   final wrongClickedColor = Colors.redAccent.shade200;
@@ -138,10 +136,12 @@ class _QuizPageState extends State<QuizPage> {
     final category = categoryHandler.category;
 
     final screenWidth = MediaQuery.of(context).size.width;
-    final questionWidth = screenWidth - 2 * outerPadding;
-    final questionHeight = 3 * questionWidth / 8;
-    final buttonWidth = screenWidth / 2 - outerPadding - innerPadding / 2;
-    final buttonHeight = buttonWidth / 2;
+    final outerSpacing = 0.03125 * screenWidth;
+    final innerSpacing = 0.046875 * screenWidth;
+    final questionWidth = screenWidth - 2 * outerSpacing;
+    final questionHeight = 0.375 * questionWidth;
+    final buttonWidth = 0.5 * screenWidth - outerSpacing - 0.5 * innerSpacing;
+    final buttonHeight = 0.5 * buttonWidth;
 
     if (answerButtonsAreEnabled) {
       setQuestions(QuestionCatcher.getQuestions(category));
@@ -150,14 +150,18 @@ class _QuizPageState extends State<QuizPage> {
     }
 
     return Scaffold(
-      appBar: AppBar( // TODO - kein zurück Button
+      appBar: AppBar(
+        leading: Padding(
+          padding: EdgeInsets.all(0.125 * AppBar().preferredSize.height),
+          child: Image.asset('assets/Logo.png'),
+        ),
         title: Text('Fragen - ' + CategoryHandler.getShortString(category)),
         actions: [
           SettingsButton(),
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(outerPadding),
+        padding: EdgeInsets.all(outerSpacing),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -168,27 +172,27 @@ class _QuizPageState extends State<QuizPage> {
                   height: questionHeight,
                   child: Text(counterText + '\n\n' + questionText, textScaleFactor: questionTextScaleFactor),
                 ),
-                SizedBox(height: innerPadding),
+                SizedBox(height: innerSpacing),
                 Row(
                   children: [
                     answerButton(answerText1, buttonColor1, buttonWidth, buttonHeight),
-                    SizedBox(width: innerPadding),
+                    SizedBox(width: innerSpacing),
                     answerButton(answerText2, buttonColor2, buttonWidth, buttonHeight),
                   ],
                 ),
-                SizedBox(height: innerPadding),
+                SizedBox(height: innerSpacing),
                 Row(
                   children: [
                     answerButton(answerText3, buttonColor3, buttonWidth, buttonHeight),
-                    SizedBox(width: innerPadding),
+                    SizedBox(width: innerSpacing),
                     answerButton(answerText4, buttonColor4, buttonWidth, buttonHeight),
                   ],
                 ),
-                SizedBox(height: innerPadding),
+                SizedBox(height: innerSpacing),
                 Text('Score: ' + score.value.toString() + ' / ' + score.maxValue.toString()),
-                SizedBox(height: innerPadding),
+                SizedBox(height: innerSpacing),
                 SizedBox(
-                  width: screenWidth - innerPadding,
+                  width: screenWidth - innerSpacing,
                   child: Text(infoText),
                 ),
               ],
@@ -198,18 +202,18 @@ class _QuizPageState extends State<QuizPage> {
                 Expanded(
                   flex: 2,
                   child: SizedBox(
-                    height: buttonHeight / 2,
+                    height: 0.5 * buttonHeight,
                     child: ElevatedButton(
                       child: Text('Weiter'),
                       onPressed: nextButtonIsEnabled ? () => getNextQuestion() : null,
                     ),
                   ),
                 ),
-                SizedBox(width: innerPadding),
+                SizedBox(width: innerSpacing),
                 Expanded(
                   flex: 1,
                   child: SizedBox(
-                    height: buttonHeight / 2,
+                    height: 0.5 * buttonHeight,
                     child: ElevatedButton(
                       child: Text('Abbruch'),
                       onPressed: () => Navigator.pop(context),

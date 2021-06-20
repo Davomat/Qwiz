@@ -1,7 +1,7 @@
 
 enum Category {
+  biology,
   cosmos,
-  health,
   logic,
   programming,
   science,
@@ -20,7 +20,7 @@ class CategoryHandler {
       case Category.technology:   return 'Technik / Ingenieurswissen';
       case Category.programming:  return 'Informatik / Programmierung';
       case Category.logic:        return 'Logik und Mathematik';
-      case Category.health:      return 'Körper und Gesundheit';
+      case Category.biology:      return 'Körper und Biologie';
       default:                    return '';
     }
   }
@@ -28,11 +28,11 @@ class CategoryHandler {
   static String getShortString(Category category) {
     switch (category) {
       case Category.cosmos:       return 'Kosmos';
-      case Category.science:      return 'NaWi';
+      case Category.science:      return 'Naturwissensch.';
       case Category.technology:   return 'Technik';
       case Category.programming:  return 'Programmierung';
       case Category.logic:        return 'Logik';
-      case Category.health:      return 'Körper';
+      case Category.biology:      return 'Biologie';
       default:                    return '';
     }
   }

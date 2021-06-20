@@ -6,7 +6,7 @@ import 'result_page.dart';
 import 'settings.dart';
 
 
-class TitleScreen extends StatelessWidget {
+class TitleScreenRoot extends StatelessWidget {
   static final routeName = '/';
 
   @override
@@ -16,66 +16,29 @@ class TitleScreen extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
       ),
-      initialRoute: TitleScreen.routeName,
+      initialRoute: TitleScreenRoot.routeName,
       routes: {
         SettingsPage.routeName: (context) => SettingsPage(),
         CategoryPage.routeName: (context) => CategoryPage(),
         QuizPage.routeName: (context) => QuizPage(),
         ResultPage.routeName: (context) => ResultPage(),
       },
-      home: TitleScreenContent(),
+      home: TitleScreen(),
     );
   }
 }
 
-class TitleScreenContent extends StatelessWidget {
-  static final outerPadding = 24.0;
-  static final innerMadePadding = 12.0;
-  static final madeLogosSize = 16.0;
 
-  static Widget copyrightBlock() {
-    return Row(
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('made with:'),
-            SizedBox(height: innerMadePadding),
-            Text('made by:'),
-          ],
-        ),
-        SizedBox(width: innerMadePadding),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                FlutterLogo(size: madeLogosSize),
-                Text(' Flutter / Dart'),
-              ],
-            ),
-            SizedBox(height: innerMadePadding),
-            Row(
-              children: [
-                Image.asset('assets/D.png', height: madeLogosSize,),
-                Text(' Daveloper - \u00a9 David Lange'),
-              ],
-            ),
-          ],
-        )
-      ],
-    );
-  }
+class TitleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final logoWidth = screenWidth - 4 * outerPadding;
-    final logoHeight = logoWidth / 2;
-    final buttonWidth = screenWidth - 2 * outerPadding;
-    final buttonHeight = buttonWidth / 8;
+    final outerSpacing = screenWidth * 0.0625;
+    final logoWidth = screenWidth - 4 * outerSpacing;
+    final logoHeight = 0.5 * logoWidth;
+    final buttonWidth = screenWidth - 2 * outerSpacing;
+    final buttonHeight = 0.125 * buttonWidth;
 
     return Scaffold(
       body: Container(
@@ -90,22 +53,22 @@ class TitleScreenContent extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.all(outerPadding),
+          padding: EdgeInsets.all(outerSpacing),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 children: [
-                  SizedBox(height: 2 * outerPadding),
+                  SizedBox(height: 2 * outerSpacing),
                   Padding(
-                    padding: EdgeInsets.all(outerPadding),
+                    padding: EdgeInsets.all(outerSpacing),
                     child: Image.asset(
                       'assets/Logo.png',
                       height: logoHeight,
                       width: logoWidth,
                     ),
                   ),
-                  SizedBox(height: 2 * outerPadding),
+                  SizedBox(height: 2 * outerSpacing),
                   SizedBox(
                     width: buttonWidth,
                     height: buttonHeight,
@@ -119,7 +82,7 @@ class TitleScreenContent extends StatelessWidget {
                       },
                     ),
                   ),
-                  SizedBox(height: 2 * outerPadding),
+                  SizedBox(height: 2 * outerSpacing),
                   SizedBox(
                     width: buttonWidth,
                     height: buttonHeight,
@@ -135,11 +98,47 @@ class TitleScreenContent extends StatelessWidget {
                   ),
                 ],
               ),
-              copyrightBlock(),
+              copyrightBlock(0.375 * outerSpacing),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  static Widget copyrightBlock(double spacing) {
+    final madeLogosSize = 16.0;
+
+    return Row(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('made with:'),
+            SizedBox(height: spacing),
+            Text('made by:'),
+          ],
+        ),
+        SizedBox(width: spacing),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                FlutterLogo(size: madeLogosSize),
+                Text(' Flutter / Dart'),
+              ],
+            ),
+            SizedBox(height: spacing),
+            Row(
+              children: [
+                Image.asset('assets/D.png', height: madeLogosSize,),
+                Text(' Daveloper - \u00a9 David Lange'),
+              ],
+            ),
+          ],
+        )
+      ],
     );
   }
 }

@@ -9,11 +9,11 @@ import 'settings.dart';
 class CategoryPage extends StatelessWidget {
   static final routeName = '/categories';
 
-  final outerPadding = 24.0;
-  final buttonVerticalSpacing = 16.0;
-
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final outerSpacing = screenWidth * 0.0625;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Kategorie-Auswahl'),
@@ -22,50 +22,50 @@ class CategoryPage extends StatelessWidget {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.all(outerPadding),
+        padding: EdgeInsets.all(outerSpacing),
         children: [
-          SizedBox(height: buttonVerticalSpacing),
+          SizedBox(height: outerSpacing),
           Center(
             child: Text(
               "Wähle eine Kategorie!",
               textScaleFactor: 2.0,
             ),
           ),
-          SizedBox(height: buttonVerticalSpacing),
-          _insertButtonLeft(context, Category.cosmos),
-          _insertButtonRight(context, Category.science),
-          _insertButtonLeft(context, Category.technology),
-          _insertButtonRight(context, Category.programming),
-          _insertButtonLeft(context, Category.logic),
-          _insertButtonRight(context, Category.health),
+          SizedBox(height: outerSpacing),
+          _insertButtonLeft( context, outerSpacing, Category.cosmos),
+          _insertButtonRight(context, outerSpacing, Category.science),
+          _insertButtonLeft( context, outerSpacing, Category.technology),
+          _insertButtonRight(context, outerSpacing, Category.programming),
+          _insertButtonLeft( context, outerSpacing, Category.logic),
+          _insertButtonRight(context, outerSpacing, Category.biology),
         ],
       ),
     );
   }
 
-  Widget _insertButtonLeft(BuildContext context, Category category) {
+  Widget _insertButtonLeft(BuildContext context, double outerSpacing, Category category) {
     return Padding(
-      padding: EdgeInsets.only(top: buttonVerticalSpacing, right: 2 * outerPadding),
+      padding: EdgeInsets.only(top: 0.5 * outerSpacing, right: 2 * outerSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: _insertButtonWithInfo(context, category),
+        children: _insertButtonWithInfo(context, outerSpacing, category),
       ),
     );
   }
 
-  Widget _insertButtonRight(BuildContext context, Category category) {
+  Widget _insertButtonRight(BuildContext context, double outerSpacing, Category category) {
     return Padding(
-      padding: EdgeInsets.only(top: buttonVerticalSpacing, left: 2 * outerPadding),
+      padding: EdgeInsets.only(top: 0.5 * outerSpacing, left: 2 * outerSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: _insertButtonWithInfo(context, category),
+        children: _insertButtonWithInfo(context, outerSpacing, category),
       ),
     );
   }
 
-  List<Widget> _insertButtonWithInfo(BuildContext context, Category category) {
+  List<Widget> _insertButtonWithInfo(BuildContext context, double outerSpacing, Category category) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final buttonWidth = screenWidth - 4 * outerPadding;
+    final buttonWidth = screenWidth - 4 * outerSpacing;
 
     return [
       SizedBox(
@@ -80,12 +80,6 @@ class CategoryPage extends StatelessWidget {
               context,
               QuizPage.routeName,
               arguments: CategoryHandler(category),
-              /*
-              PageTransition(
-                type: PageTransitionType.fade,
-                child: QuizPage(),
-              ),
-               */
             );
           },
         ),

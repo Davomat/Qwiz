@@ -33,8 +33,8 @@ class QuestionCatcher {
       case Category.technology:   return _getQuestionsAboutTechnology();
       case Category.programming:  return _getQuestionsAboutProgramming();
       case Category.logic:        return _getQuestionsAboutLogic();
-      case Category.health:       return _getQuestionsAboutHealth();
-      default:                    return new List<Question>.empty();
+      case Category.biology:      return _getQuestionsAboutBiology();
+      default:                    return List<Question>.empty();
     }
   }
 
@@ -323,12 +323,12 @@ class QuestionCatcher {
     questions.add(qqTimeSunCoreToSurface);
 
     final qSIUnits = Question(
-      questionText: 'Was ist keine SI-Einheit?',
+      questionText: 'Was ist keine SI-Größe?',
       rightAnswer:  'elektrische Spannung U',
       wrongAnswer1: 'Stoffmenge n',
       wrongAnswer2: 'Temperatur T',
       wrongAnswer3: 'Lichtstärke I_v',
-      additionalInformation: 'Die Stromstärke I ist ein SI-Einheit.',
+      additionalInformation: 'Die Stromstärke I ist ein SI-Größe.',
     );
     questions.add(qSIUnits);
 
@@ -576,7 +576,7 @@ class QuestionCatcher {
   }
 
 
-  static List<Question> _getQuestionsAboutHealth() {
+  static List<Question> _getQuestionsAboutBiology() {
     final questions = new List<Question>.empty(growable: true);
 
     final qVitaminD = Question(
