@@ -16,7 +16,6 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final questionTextScaleFactor = 1.4;
   final unClickedColor = Colors.grey.shade400;
   final wrongClickedColor = Colors.redAccent.shade200;
   final rightClickedColor = Colors.green;
@@ -170,7 +169,7 @@ class _QuizPageState extends State<QuizPage> {
                 SizedBox(
                   width: questionWidth,
                   height: questionHeight,
-                  child: Text(counterText + '\n\n' + questionText, textScaleFactor: questionTextScaleFactor),
+                  child: Text(counterText + '\n\n' + questionText, textScaleFactor: 1.4),
                 ),
                 SizedBox(height: innerSpacing),
                 Row(

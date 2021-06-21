@@ -20,7 +20,7 @@ class CategoryHandler {
       case Category.technology:   return 'Technik / Ingenieurswissen';
       case Category.programming:  return 'Informatik / Programmierung';
       case Category.logic:        return 'Logik und Mathematik';
-      case Category.biology:      return 'Körper und Biologie';
+      case Category.biology:      return 'Biologie und Umwelt';
       default:                    return '';
     }
   }
