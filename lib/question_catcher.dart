@@ -455,6 +455,33 @@ class QuestionCatcher {
     final questions = new List<Question>.empty(growable: true);
 
     questions.add(Question(
+      questionText: 'Wie viele Ziffern hat das Binärsystem?',
+      rightAnswer:  '2',
+      wrongAnswer1: '1',
+      wrongAnswer2: '4',
+      wrongAnswer3: '16',
+      additionalInformation: 'In der Digitaltechnik gibt es nur die zwei Zustände an/aus bzw. 1/0, high/low, true/false. Dementsprechend wird auch nur mit zwei Ziffern gerechnet.',
+    ));
+
+    questions.add(Question(
+      questionText: 'Wie sieht die Zahl 1000 im Binärsystem aus?',
+      rightAnswer:  '1111101000',
+      wrongAnswer1: '100100100100',
+      wrongAnswer2: '11110000',
+      wrongAnswer3: '11000000011',
+      additionalInformation: '1000 = 512 + 256 + 128 + 64 + 32 + 8 = 1*2^9 + 1*2^8 + 1*2^7 + 1*2^6 + 1*2^5 + 0*2^4 + 1*2^3 + 0*2^2 + 0*2^1 + 0*2^0',
+    ));
+
+    questions.add(Question(
+      questionText: 'Wie sieht die Zahl 1000 im Hexadezimalsystem aus?',
+      rightAnswer:  '3E8',
+      wrongAnswer1: '1750',
+      wrongAnswer2: 'F324A',
+      wrongAnswer3: 'CA',
+      additionalInformation: 'Es gibt die Ziffern 0 bis 9, sowie A [10], B [11], C [12], D [13], E [14] und F [15]. 1000 = 3*16^2 + E*16^1 + 8*16^0',
+    ));
+
+    questions.add(Question(
       questionText: 'Wie viele Bit sind ein Byte?',
       rightAnswer:  '8',
       wrongAnswer1: '10',
@@ -530,6 +557,15 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
+      questionText: 'Wie viele Wägungen sind mit einer Goldwaage nötig, um 1 schwerere von sonst 7 gleich-schweren Kugeln zu identifizieren?',
+      rightAnswer:  '2',
+      wrongAnswer1: '3',
+      wrongAnswer2: '4',
+      wrongAnswer3: '5',
+      additionalInformation: 'Man wägt erst 3 gegen 3 ab und behält die schwereren bzw. die 2 übrigen, wenn sie gleich schwer sind. Von den übrigen wägt man 1 gegen 1 ab. Die schwerere oder übrige Kugel ist die gesuchte.',
+    ));
+
+    questions.add(Question(
       questionText: 'Herr Müller hat 2 Kinder. Eins davon ist ein Mädchen. Mit welcher Wahrscheinlichkeit ist das andere ein Junge?',
       rightAnswer:  '2/3',
       wrongAnswer1: '1/4',
@@ -546,11 +582,45 @@ class QuestionCatcher {
     final questions = new List<Question>.empty(growable: true);
 
     questions.add(Question(
+      questionText: 'Wodurch entstehen die Luftblasen im Brot?',
+      rightAnswer:  'Hefe- und Milchsäure-Bakterien',
+      wrongAnswer1: 'gezielte Knetverfahren',
+      wrongAnswer2: 'Kohlensäure im Wasser des Teigs',
+      wrongAnswer3: 'Aufplatzen von Körnern bei Hitze',
+    ));
+
+    questions.add(Question(
       questionText: 'Welches Vitamin wird durch Sonneneinstrahlung in der Haut produziert?',
       rightAnswer:  'D',
       wrongAnswer1: 'A',
       wrongAnswer2: 'B',
       wrongAnswer3: 'E',
+    ));
+
+    questions.add(Question(
+      questionText: 'Was ist kein Bestandteil des menschlichen Auges?',
+      rightAnswer:  'Nagel',
+      wrongAnswer1: 'Hornhaut',
+      wrongAnswer2: 'Iris',
+      wrongAnswer3: 'Linse',
+    ));
+
+    questions.add(Question(
+      questionText: 'Wie viele Knochen hat ein erwachsener Mensch?',
+      rightAnswer:  '206 - 212',
+      wrongAnswer1: '104 - 106',
+      wrongAnswer2: '312 - 342',
+      wrongAnswer3: '442 - 504',
+      additionalInformation: 'Säuglinge haben über 300 Knochen, von denen einige im Laufe der Zeit zusammenwachsen. Auch Knorpelstrukturen verknöchern über die Zeit, weshalb keine eindeutige Anzahl genannt werden kann.',
+    ));
+
+    questions.add(Question(
+      questionText: 'Welches menschliche Organ hat die größte innere Oberfläche?',
+      rightAnswer:  'Lunge',
+      wrongAnswer1: 'Haut',
+      wrongAnswer2: 'Darm',
+      wrongAnswer3: 'Gehirn',
+      additionalInformation: 'Die Haut hat zwar das größte Volumen, ist aber nur bis 2 m² groß. Die LUnge kommt auf gut 100 m². Der Darm hat entgegen früheren Schätzungen von 300 m² nur gut 30 m².',
     ));
 
     questions.add(Question(
@@ -562,12 +632,38 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
+      questionText: 'Wie viele Chromosomen hat die menschliche DNA?',
+      rightAnswer:  '23',
+      wrongAnswer1: '21',
+      wrongAnswer2: '13',
+      wrongAnswer3: '11',
+    ));
+
+    questions.add(Question(
       questionText: 'Welche Milch-Alternative verbraucht am wenigsten Ressourcen?',
       rightAnswer:  'Hafer',
       wrongAnswer1: 'Soja',
       wrongAnswer2: 'Mandel',
       wrongAnswer3: 'Reis',
       additionalInformation: 'Alle verbauchen deutlich weniger Wasser und Platz als Kuhmilch und erzeugen viel weniger Emissionen. Mandel- und Reis-Anbau sind sehr wasserintensiv, die Sojaproduktion benötigt mehr Fläche und Energie als die von Hafer.',
+    ));
+
+    questions.add(Question(
+      questionText: 'Welche ist die weltweit häufigste Todesursache?',
+      rightAnswer:  'Verstopfung der Herzkranzgefäße',
+      wrongAnswer1: 'Unfälle im Verkehr und zuhause',
+      wrongAnswer2: 'Lungen-, Darm-, Blut- und Brustkrebs',
+      wrongAnswer3: 'Krankheiten wie HIV, Malaria und Tuberkulose',
+      additionalInformation: 'Die koronare Herzkrankheit wird in den meisten Fällen durch Arteriosklerose (ugs. „Arterienverkalkung“) verursacht, welche von hohem Alter oder einem ungesunden Lebesstil herrührt.',
+    ));
+
+    questions.add(Question(
+      questionText: 'Welches Hormon reguliert den Stoffwechsel bzgl. Kohlenhydrate?',
+      rightAnswer:  'Insulin',
+      wrongAnswer1: 'Adrenalin',
+      wrongAnswer2: 'Oxytocin',
+      wrongAnswer3: 'Serotonin',
+      additionalInformation: 'Serotonin und Adrenalin sind Neurotransmitter (Botenstoffe für Synapsen) mit verschiedenen \"psychischen\" Auswirkungen. Oxytocin löst Wehen aus und stimuliert Brustdrüsen zur Milchabgabe.'
     ));
 
     questions.add(Question(
