@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'category_page.dart';
 import 'quiz_page.dart';
 import 'result_page.dart';
 import 'settings.dart';
+import 'theme_provider.dart';
 
 
 class TitleScreenRoot extends StatelessWidget {
@@ -11,19 +13,24 @@ class TitleScreenRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Qwiz',
-      theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
+    return ChangeNotifierProvider(
+      create: (_) => ThemeNotifier(),
+      child: Consumer<ThemeNotifier>(
+        builder: (context, ThemeNotifier notifier, child) {
+          return MaterialApp(
+            title: 'Qwiz',
+            theme: notifier.darkTheme ? dark : light,
+            initialRoute: TitleScreenRoot.routeName,
+            routes: {
+              SettingsPage.routeName: (context) => SettingsPage(),
+              CategoryPage.routeName: (context) => CategoryPage(),
+              QuizPage.routeName: (context) => QuizPage(),
+              ResultPage.routeName: (context) => ResultPage(),
+            },
+            home: TitleScreen(),
+          );
+        },
       ),
-      initialRoute: TitleScreenRoot.routeName,
-      routes: {
-        SettingsPage.routeName: (context) => SettingsPage(),
-        CategoryPage.routeName: (context) => CategoryPage(),
-        QuizPage.routeName: (context) => QuizPage(),
-        ResultPage.routeName: (context) => ResultPage(),
-      },
-      home: TitleScreen(),
     );
   }
 }

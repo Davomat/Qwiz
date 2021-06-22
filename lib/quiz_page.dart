@@ -62,7 +62,6 @@ class _QuizPageState extends State<QuizPage> {
 
   setButtonColors(String answerText) {
     setState(() {
-      buttonColor1 = buttonColor2 = buttonColor3 = buttonColor4 = unClickedColor;
       if (answerText1 == answerText) buttonColor1 = wrongClickedColor;
       if (answerText2 == answerText) buttonColor2 = wrongClickedColor;
       if (answerText3 == answerText) buttonColor3 = wrongClickedColor;
@@ -76,7 +75,7 @@ class _QuizPageState extends State<QuizPage> {
 
   resetButtonColors() {
     setState(() {
-      buttonColor1 = buttonColor2 = buttonColor3 = buttonColor4 = Colors.lightGreen;
+      buttonColor1 = buttonColor2 = buttonColor3 = buttonColor4 = Theme.of(context).primaryColor; // TODO
     });
   }
 
