@@ -54,8 +54,8 @@ class TitleScreen extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: <Color>[
-              Colors.lightGreen.shade400,
-              Colors.white,
+              Theme.of(context).primaryColor,
+              Theme.of(context).bottomAppBarColor,
             ],
           ),
         ),

@@ -9,7 +9,7 @@ class FadeTransitionBuilder extends PageTransitionsBuilder {
 ThemeData light = ThemeData(
   brightness: Brightness.light,
   primarySwatch: Colors.lightGreen,
-  accentColor: Colors.lightGreenAccent,
+  primaryColor: Colors.lightGreen,
   pageTransitionsTheme: PageTransitionsTheme(builders: {
     TargetPlatform.iOS: FadeTransitionBuilder(),
     TargetPlatform.android: FadeTransitionBuilder(),
@@ -19,7 +19,7 @@ ThemeData light = ThemeData(
 ThemeData dark = ThemeData(
   brightness: Brightness.dark,
   primarySwatch: Colors.indigo,
-  accentColor: Colors.indigoAccent,
+  primaryColor: Colors.indigo,
   pageTransitionsTheme: PageTransitionsTheme(builders: {
     TargetPlatform.iOS: FadeTransitionBuilder(),
     TargetPlatform.android: FadeTransitionBuilder(),

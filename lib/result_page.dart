@@ -59,8 +59,8 @@ class _ResultPageState extends State<ResultPage> {
             begin: Alignment.bottomRight,
             end: Alignment.topLeft,
             colors: <Color>[
-              Colors.lightGreen.shade400,
-              Colors.white,
+              Theme.of(context).bottomAppBarColor,
+              Theme.of(context).primaryColor,
             ],
           ),
         ),
