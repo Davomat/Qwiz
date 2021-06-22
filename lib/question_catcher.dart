@@ -381,7 +381,7 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
-      questionText: 'Wie klein sind die Strukturgrößen 2021 in aktuellen Prozessoren?',
+      questionText: 'Wie klein sind die Strukturgrößen in aktuellen Prozessoren von 2020?',
       rightAnswer:  '10 nm',
       wrongAnswer1: '100 nm',
       wrongAnswer2: '1 \u00B5m',
@@ -553,11 +553,20 @@ class QuestionCatcher {
       wrongAnswer1: '16',
       wrongAnswer2: '64',
       wrongAnswer3: '1024',
-      additionalInformation: '2^2^2^2 = 4^2^2 = 16^2 = 256',
+      additionalInformation: '2^2^2^2 = 4^2^2 = 16^2 = 256', // TODO andersrum geht nicht weil exponenten werden exponenziert, indem man multipliziert
     ));
 
     questions.add(Question(
-      questionText: 'Wie viele Wägungen sind mit einer Goldwaage nötig, um 1 schwerere von sonst 7 gleich-schweren Kugeln zu identifizieren?',
+      questionText: '{7890} = 4     {3664} = 3     {3700} = 2\n{3678} = 3     {5890} = 4     {2630} = 2\n{1890} = 4     {3859} = 3     {7801} = 3\n{1462} = 2     {8444} = 5     {2580} = ?',
+      rightAnswer:  '3',
+      wrongAnswer1: '2',
+      wrongAnswer2: '4',
+      wrongAnswer3: '5',
+      additionalInformation: 'Gesucht ist die Anzahl geschlossener Bereiche in den Ziffern. Die 1, 2, 3, 5 und 7 haben 0, die 0, 4, 6 und 9 haben 1 und die 8 hat 2.',
+    ));
+
+    questions.add(Question(
+      questionText: 'Wie viele Wägungen sind mit einer Balkenwaage mit 2 Schalen nötig, um 1 schwerere unter 8 ansonsten gleich-schweren Kugeln zu identifizieren?',
       rightAnswer:  '2',
       wrongAnswer1: '3',
       wrongAnswer2: '4',

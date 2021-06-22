@@ -138,7 +138,7 @@ class _QuizPageState extends State<QuizPage> {
     final outerSpacing = 0.03125 * screenWidth;
     final innerSpacing = 0.046875 * screenWidth;
     final questionWidth = screenWidth - 2 * outerSpacing;
-    final questionHeight = 0.375 * questionWidth;
+    final questionHeight = 0.25 * questionWidth;
     final buttonWidth = 0.5 * screenWidth - outerSpacing - 0.5 * innerSpacing;
     final buttonHeight = 0.5 * buttonWidth;
 
@@ -165,11 +165,16 @@ class _QuizPageState extends State<QuizPage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(counterText, textScaleFactor: 1.375),
+                SizedBox(height: outerSpacing),
                 SizedBox(
-                  width: questionWidth,
+                  //width: questionWidth,
                   height: questionHeight,
-                  child: Text(counterText + '\n\n' + questionText, textScaleFactor: 1.4),
+                  child: SingleChildScrollView(
+                      child: Text(questionText, textScaleFactor: 1.375),
+                  ),
                 ),
                 SizedBox(height: innerSpacing),
                 Row(
@@ -188,27 +193,16 @@ class _QuizPageState extends State<QuizPage> {
                   ],
                 ),
                 SizedBox(height: innerSpacing),
-                Text('Score: ' + score.value.toString() + ' / ' + score.maxValue.toString()),
-                SizedBox(height: innerSpacing),
-                SizedBox(
-                  width: screenWidth - innerSpacing,
-                  child: Text(infoText),
+                Center(
+                  child: Text('Score: ' + score.value.toString() + ' / ' + score.maxValue.toString()),
                 ),
               ],
             ),
+            SingleChildScrollView(
+                child: Text(infoText),
+            ),
             Row(
               children: [
-                Expanded(
-                  flex: 2,
-                  child: SizedBox(
-                    height: 0.5 * buttonHeight,
-                    child: ElevatedButton(
-                      child: Text('Weiter'),
-                      onPressed: nextButtonIsEnabled ? () => getNextQuestion() : null,
-                    ),
-                  ),
-                ),
-                SizedBox(width: innerSpacing),
                 Expanded(
                   flex: 1,
                   child: SizedBox(
@@ -216,6 +210,17 @@ class _QuizPageState extends State<QuizPage> {
                     child: ElevatedButton(
                       child: Text('Abbruch'),
                       onPressed: () => Navigator.pop(context),
+                    ),
+                  ),
+                ),
+                SizedBox(width: innerSpacing),
+                Expanded(
+                  flex: 2,
+                  child: SizedBox(
+                    height: 0.5 * buttonHeight,
+                    child: ElevatedButton(
+                      child: Text('Weiter'),
+                      onPressed: nextButtonIsEnabled ? () => getNextQuestion() : null,
                     ),
                   ),
                 ),
