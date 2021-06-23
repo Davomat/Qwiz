@@ -19,7 +19,15 @@ class TitleScreenRoot extends StatelessWidget {
         builder: (context, ThemeNotifier notifier, child) {
           return MaterialApp(
             title: 'Qwiz',
-            theme: notifier.darkTheme ? dark : light,
+            theme: ThemeData(
+              brightness: notifier.darkTheme ? Brightness.dark : Brightness.light,
+              primarySwatch: notifier.darkTheme ? Colors.indigo : Colors.lightGreen,
+              primaryColor: notifier.darkTheme ? Colors.indigo : Colors.lightGreen,
+              pageTransitionsTheme: PageTransitionsTheme(builders: {
+                TargetPlatform.iOS: FadeTransitionBuilder(),
+                TargetPlatform.android: FadeTransitionBuilder(),
+              }),
+            ),
             initialRoute: TitleScreenRoot.routeName,
             routes: {
               SettingsPage.routeName: (context) => SettingsPage(),
