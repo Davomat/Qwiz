@@ -111,7 +111,7 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
-      questionText: 'Welche Planeten hat neben Saturn noch \"Ringe\"?',
+      questionText: 'Welche Planeten haben neben Saturn auch ein Ringsystem?',
       rightAnswer:   'Uranus und Neptun',
       wrongAnswer1:  'Neptun und Mars',
       wrongAnswer2:    'Mars und Jupiter',
@@ -146,12 +146,12 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
-      questionText: 'Wie schwer muss ein Stern mindestens sein, um \"im Bestfall\" in ein schwarzes Loch zu kollabieren?',
+      questionText: 'Wie viel Masse muss ein Stern mindestens beseitzen, um bei seinem Tod in ein schwarzes Loch kollabieren zu können?',
       rightAnswer:     '3 Sonnenmassen',
       wrongAnswer1:   '30 Sonnenmassen',
       wrongAnswer2:  '300 Sonnenmassen',
       wrongAnswer3: '3000 Sonnenmassen',
-      additionalInformation: 'Nach der Supernova müssen mindestens 2,5 Sonnenmassen verbleiben, um ein schwarzes Loch zu bilden. Das betrifft die meisten Sterne mit ca. 8 bis 30 Sonnenmassen.',
+      additionalInformation: 'Bei der Supernova wird häufig der Großteil der Masse weggeschleudert. Zur Bildung eines schwarzen Lochs müssen mindestens 2,5 Sonnenmassen verbleiben, was im Regelfall Sterne mit ca. 8 bis 30 Sonnenmassen betrifft, im \"Bestfall\" reichen bereits 3.',
     ));
 
     questions.add(Question(
@@ -180,7 +180,7 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
-      questionText: 'Das Erdmagnetfeld hat eine Flussdichte von 50 \u00B5T. Wie hoch kann die eines Magnetars werden?',
+      questionText: 'Das Erdmagnetfeld hat eine Flussdichte von 50 µT. Wie hoch kann die eines Magnetars werden?',
       rightAnswer:  'bis zu 1 Billion T',
       wrongAnswer1: 'bis zu 200 Tausend T',
       wrongAnswer2: 'bis zu 50 T',
@@ -323,11 +323,11 @@ class QuestionCatcher {
 
     questions.add(Question(
       questionText: 'Durch welche SI-Einheiten lässt sich die Einheit Newton [N] ausdrücken?',
-      rightAnswer:  '(kg * m) / (s * s)',
-      wrongAnswer1:     '(kg) / (m * s * s)',
-      wrongAnswer2:     '(kg) / (m * s)',
-      wrongAnswer3: '(kg * m) / (s)',
-      additionalInformation: 'Kraft ist Masse [kg] * Beschleunigung [m/s²].',
+      rightAnswer:  '(kg ∙ m) / (s ∙ s)',
+      wrongAnswer1:     '(kg) / (m ∙ s ∙ s)',
+      wrongAnswer2:     '(kg) / (m ∙ s)',
+      wrongAnswer3: '(kg ∙ m) / (s)',
+      additionalInformation: 'Kraft ist Masse [kg] ∙ Beschleunigung [m/s²].',
     ));
 
     questions.add(Question(
@@ -345,7 +345,7 @@ class QuestionCatcher {
       wrongAnswer1: 'Wellenlänge und Frequenz von Strahlung',
       wrongAnswer2: 'Polarisierung und Feldstärke von Ladungen',
       wrongAnswer3: 'Energie und Orbital von Elektronen',
-      additionalInformation: 'E = h*f.\nDie Entdeckung des Wirkungsquantums durch Max Planck um 1900 begründete die Quantenphysik und legte die Basis des Welle-Teilchen-Dualismus.',
+      additionalInformation: 'E = h∙f.\nDie Entdeckung des Wirkungsquantums durch Max Planck um 1900 begründete die Quantenphysik und legte die Basis des Welle-Teilchen-Dualismus.',
     ));
 
     return questions;
@@ -469,7 +469,7 @@ class QuestionCatcher {
       wrongAnswer1: '100100100100',
       wrongAnswer2: '11110000',
       wrongAnswer3: '11000000011',
-      additionalInformation: '1000 = 512 + 256 + 128 + 64 + 32 + 8 = 1*2^9 + 1*2^8 + 1*2^7 + 1*2^6 + 1*2^5 + 0*2^4 + 1*2^3 + 0*2^2 + 0*2^1 + 0*2^0',
+      additionalInformation: '1000 = 512 + 256 + 128 + 64 + 32 + 8 = 1∙2^9 + 1∙2^8 + 1∙2^7 + 1∙2^6 + 1∙2^5 + 0∙2^4 + 1∙2^3 + 0∙2^2 + 0∙2^1 + 0∙2^0',
     ));
 
     questions.add(Question(
@@ -478,7 +478,7 @@ class QuestionCatcher {
       wrongAnswer1: '1750',
       wrongAnswer2: 'F324A',
       wrongAnswer3: 'CA',
-      additionalInformation: 'Es gibt die Ziffern 0 bis 9, sowie A [10], B [11], C [12], D [13], E [14] und F [15]. 1000 = 3*16^2 + E*16^1 + 8*16^0',
+      additionalInformation: 'Es gibt die Ziffern 0 bis 9, sowie A [10], B [11], C [12], D [13], E [14] und F [15]. 1000 = 3∙16^2 + E∙16^1 + 8∙16^0',
     ));
 
     questions.add(Question(
@@ -549,11 +549,11 @@ class QuestionCatcher {
 
     questions.add(Question(
       questionText: 'Was ist 2^2^2^2?',
-      rightAnswer:  '256',
-      wrongAnswer1: '16',
+      rightAnswer:  '65.536',
+      wrongAnswer1: '256',
       wrongAnswer2: '64',
-      wrongAnswer3: '1024',
-      additionalInformation: '2^2^2^2 = 4^2^2 = 16^2 = 256', // TODO andersrum geht nicht weil exponenten werden exponenziert, indem man multipliziert
+      wrongAnswer3: '16',
+      additionalInformation: 'Entgegen dem Berechnungsalgorithmus überlicher Taschenrechner (z.B. Windows\' calc.exe) ist das Potenzieren rechtsassoziativ. Das heißt, ohne Klammerung wird \"von rechts nach links\" gerechnet: 2^2^2^2 = 2^(2^[2^2]) = 2^(2^4) = 2^16',
     ));
 
     questions.add(Question(
@@ -686,5 +686,5 @@ class QuestionCatcher {
 
     return questions;
   }
-// TODO mal mit punkt ersetzen
+
 }

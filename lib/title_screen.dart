@@ -55,7 +55,7 @@ class TitleScreen extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: <Color>[
               Theme.of(context).primaryColor,
-              Theme.of(context).bottomAppBarColor,
+              Theme.of(context).canvasColor,
             ],
           ),
         ),
@@ -80,7 +80,7 @@ class TitleScreen extends StatelessWidget {
                     width: buttonWidth,
                     height: buttonHeight,
                     child: ElevatedButton(
-                      child: Text('START', textScaleFactor: 1.25,),
+                      child: Text('Start'.toUpperCase(), textScaleFactor: 1.25,),
                       onPressed: () {
                         Navigator.pushNamed(
                           context,

@@ -27,7 +27,7 @@ ThemeData dark = ThemeData(
 );
 
 class ThemeNotifier extends ChangeNotifier {
-  final String key = "theme";
+  final key = "theme";
   bool _darkTheme = false;
 
   ThemeNotifier();
