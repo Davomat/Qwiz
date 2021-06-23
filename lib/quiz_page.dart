@@ -16,9 +16,8 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final wrongClickedColor = Colors.redAccent.shade200;
-  final rightClickedColor = Colors.green;
-  final unClickedColor = Colors.grey;
+  final _wrongClickedColor = Colors.red.shade300;
+  final _rightClickedColor = Colors.green;
 
   bool answerButtonsAreEnabled = true;
   bool nextButtonIsEnabled = false;
@@ -31,11 +30,12 @@ class _QuizPageState extends State<QuizPage> {
   String answerText2 = '';
   String answerText3 = '';
   String answerText4 = '';
+  String currentAnswerText = '';
   String infoText = '';
-  Color buttonColor1 = Colors.lightGreen;
-  Color buttonColor2 = Colors.lightGreen;
-  Color buttonColor3 = Colors.lightGreen;
-  Color buttonColor4 = Colors.lightGreen;
+  Color buttonColor1 = Colors.grey;
+  Color buttonColor2 = Colors.grey;
+  Color buttonColor3 = Colors.grey;
+  Color buttonColor4 = Colors.grey;
   List<Question> questions = List.empty();
 
   setQuestions(List<Question> listOfQuestions) {
@@ -53,24 +53,23 @@ class _QuizPageState extends State<QuizPage> {
   checkAnswer(String answerText) {
     setState(() {
       answerButtonsAreEnabled = false;
+      currentAnswerText = answerText;
       score.increase(answerText == questions.elementAt(questionCounter).rightAnswer);
-      setButtonColors(answerText);
       infoText = questions.elementAt(questionCounter).additionalInformation;
       nextButtonIsEnabled = true;
     });
   }
 
-  setButtonColors(String answerText) {
+  setButtonColors() {
     setState(() {
-      buttonColor1 = buttonColor2 = buttonColor3 = buttonColor4 = unClickedColor;
-      if (answerText1 == answerText) buttonColor1 = wrongClickedColor;
-      if (answerText2 == answerText) buttonColor2 = wrongClickedColor;
-      if (answerText3 == answerText) buttonColor3 = wrongClickedColor;
-      if (answerText4 == answerText) buttonColor4 = wrongClickedColor;
-      if (answerText1 == questions.elementAt(questionCounter).rightAnswer) buttonColor1 = rightClickedColor;
-      if (answerText2 == questions.elementAt(questionCounter).rightAnswer) buttonColor2 = rightClickedColor;
-      if (answerText3 == questions.elementAt(questionCounter).rightAnswer) buttonColor3 = rightClickedColor;
-      if (answerText4 == questions.elementAt(questionCounter).rightAnswer) buttonColor4 = rightClickedColor;
+      if (answerText1 == currentAnswerText) buttonColor1 = _wrongClickedColor;
+      if (answerText2 == currentAnswerText) buttonColor2 = _wrongClickedColor;
+      if (answerText3 == currentAnswerText) buttonColor3 = _wrongClickedColor;
+      if (answerText4 == currentAnswerText) buttonColor4 = _wrongClickedColor;
+      if (answerText1 == questions.elementAt(questionCounter).rightAnswer) buttonColor1 = _rightClickedColor;
+      if (answerText2 == questions.elementAt(questionCounter).rightAnswer) buttonColor2 = _rightClickedColor;
+      if (answerText3 == questions.elementAt(questionCounter).rightAnswer) buttonColor3 = _rightClickedColor;
+      if (answerText4 == questions.elementAt(questionCounter).rightAnswer) buttonColor4 = _rightClickedColor;
     });
   }
 
@@ -141,11 +140,14 @@ class _QuizPageState extends State<QuizPage> {
     final buttonWidth = 0.5 * screenWidth - outerSpacing - 0.5 * innerSpacing;
     final buttonHeight = 0.5 * buttonWidth;
 
+    resetButtonColors();
     if (answerButtonsAreEnabled) {
       setQuestions(QuestionCatcher.getQuestions(category));
       setNumberOfQuestions();
-      resetButtonColors();
       updateAllTexts(questions);
+    }
+    else {
+      setButtonColors();
     }
 
     return Scaffold(
