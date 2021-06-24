@@ -331,6 +331,15 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
+      questionText: 'Woraus besteht der Großteil des Hausstaubs?',
+      rightAnswer:  'Textil- und Holz-Fasern',
+      wrongAnswer1: 'abgestorbene Hautzellen',
+      wrongAnswer2: 'Bakterien und Mikroorganismen',
+      wrongAnswer3: 'Pollen und Blütenstaub',
+      additionalInformation: 'In Bezug auf die Masse bestreiten Baumwollfasern den größten Teil des Hausstaubs. Abgestorbene Hautzellen, Haare und andere Textil-, Synthetik- sowie Holzfasern ergeben ebenso einen großen Anteil. Der Rest besteht aus Mikroorganismen, Asche, Tabak, Graphit oder auch Radiergummi.',
+    ));
+
+    questions.add(Question(
       questionText: 'Warum sind Eisenstangen im Gegensatz zu Holz oder Glas biegbar?',
       rightAnswer:  'besondere atomare Bindung in Metallen',
       wrongAnswer1: 'Es sind ultra-viskose Flüssigkeiten',
@@ -677,11 +686,11 @@ class QuestionCatcher {
 
     questions.add(Question(
       questionText: 'Wofür ist das Fluorid in Zahnpasta?',
-      rightAnswer:  'Füllen beschädigter atomarer Stellen am Zahn', // TODO besser beschreiben, iwas mit aushärten
+      rightAnswer:  'Remineralisation des Zahnschmelzes',
       wrongAnswer1: 'Vorbeuge gegen Zahnstein',
       wrongAnswer2: 'Bekämpfung von Bakterien und Zahnbelag',
       wrongAnswer3: 'Pflege und Stärkung des Zahnfleischs',
-      additionalInformation: '', // TODO hier dann die atomaren Schädigungen rein
+      additionalInformation: 'Die von Mikroorganismen erzeugte Säure kann das Calciumhydroxid (genauer: die Hydroxid-Ionen) im Zahnschmelz lösen, wodurch Karies entsteht. Die Fluorid-Ionen können sich an der Stelle der herausgelösten Hydroxid-Ionen binden und bilden eine festere Verbindung als vorher.',
     ));
 
     return questions;
