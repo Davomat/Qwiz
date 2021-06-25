@@ -14,7 +14,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  String _dropdownValue = 'Grün';
+  ThemeColor _dropdownValue = ThemeColor.green;
 
   @override
   Widget build(BuildContext context) {
@@ -39,25 +39,26 @@ class _SettingsPageState extends State<SettingsPage> {
                 value: notifier.darkTheme,
               ),
             ),
-            DropdownButton(
-              iconSize: 48.0,
-              isExpanded: true,
-              iconEnabledColor: Theme.of(context).primaryColor,
-              iconDisabledColor: Theme.of(context).primaryColor,
-              value: _dropdownValue,
-              items: getAllColors()
-                .map<String>((ThemeColor color) => stringOf(color))
-                .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
-              onChanged: (String? newValue) {
-                setState(() {
-                  _dropdownValue = newValue!;
-                });
-              },
+            Consumer<ThemeNotifier>(
+              builder:(context, notifier, child) => DropdownButton(
+                iconSize: 48.0,
+                isExpanded: true,
+                iconEnabledColor: Theme.of(context).primaryColor,
+                iconDisabledColor: Theme.of(context).primaryColor,
+                value: notifier.themeColor,
+                items: getAllColors()
+                  .map<DropdownMenuItem<ThemeColor>>((ThemeColor value) {
+                  return DropdownMenuItem(
+                    value: value,
+                    child: Text(stringOf(value)),
+                  );
+                }).toList(),
+                onChanged: (ThemeColor? newValue) {
+                  setState(() {
+                    _dropdownValue = notifier.changeColor(newValue!);
+                  });
+                },
+              ),
             ),
           ],
         ),

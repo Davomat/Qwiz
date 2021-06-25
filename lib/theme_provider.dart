@@ -11,9 +11,17 @@ class ThemeNotifier extends ChangeNotifier {
   ThemeNotifier();
 
   bool get darkTheme => _darkTheme;
+  ThemeColor get themeColor => _themeColor;
 
-  toggleTheme(){
+  bool toggleTheme(){
     _darkTheme = !_darkTheme;
     notifyListeners();
+    return _darkTheme;
+  }
+
+  ThemeColor changeColor(ThemeColor newColor){
+    _themeColor = newColor;
+    notifyListeners();
+    return _themeColor;
   }
 }

@@ -36,8 +36,8 @@ class CategoryPage extends StatelessWidget {
           _insertButtonRight(context, outerSpacing, Category.science),
           _insertButtonLeft( context, outerSpacing, Category.technology),
           _insertButtonRight(context, outerSpacing, Category.programming),
-          _insertButtonLeft( context, outerSpacing, Category.logic),
-          _insertButtonRight(context, outerSpacing, Category.biology),
+          _insertButtonLeft(context, outerSpacing, Category.biology),
+          _insertButtonRight( context, outerSpacing, Category.logic),
         ],
       ),
     );
@@ -45,46 +45,61 @@ class CategoryPage extends StatelessWidget {
 
   Widget _insertButtonLeft(BuildContext context, double outerSpacing, Category category) {
     return Padding(
-      padding: EdgeInsets.only(top: 0.5 * outerSpacing, right: 2 * outerSpacing),
+      padding: EdgeInsets.only(top: 0.75 * outerSpacing),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: _insertButtonWithInfo(context, outerSpacing, category),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _insertButton(context, outerSpacing, category),
+                Image.asset(CategoryHandler.getIcon(category), width: 1.5 * outerSpacing),
+              ],
+            ),
+            Text(QuestionCatcher.getNumberOfQuestions(category).toString() + ' Fragen'),
+          ]
       ),
     );
   }
 
   Widget _insertButtonRight(BuildContext context, double outerSpacing, Category category) {
     return Padding(
-      padding: EdgeInsets.only(top: 0.5 * outerSpacing, left: 2 * outerSpacing),
+      padding: EdgeInsets.only(top: 0.5 * outerSpacing),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
-        children: _insertButtonWithInfo(context, outerSpacing, category),
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset(CategoryHandler.getIcon(category), width: 1.5 * outerSpacing),
+              _insertButton(context, outerSpacing, category),
+            ],
+          ),
+          Text(QuestionCatcher.getNumberOfQuestions(category).toString() + ' Fragen'),
+        ]
       ),
     );
   }
 
-  List<Widget> _insertButtonWithInfo(BuildContext context, double outerSpacing, Category category) {
+  Widget _insertButton(BuildContext context, double outerSpacing, Category category) {
     final screenWidth = MediaQuery.of(context).size.width;
     final buttonWidth = screenWidth - 4 * outerSpacing;
 
-    return [
-      SizedBox(
-        width: buttonWidth,
-        child: ElevatedButton(
-          child: Text(
-            CategoryHandler.getFullString(category),
-            textScaleFactor: 1.25,
-          ),
-          onPressed: () {
-            Navigator.pushNamed(
-              context,
-              QuizPage.routeName,
-              arguments: CategoryHandler(category),
-            );
-          },
+    return SizedBox(
+      width: buttonWidth,
+      child: ElevatedButton(
+        child: Text(
+          CategoryHandler.getFullString(category),
+          textScaleFactor: 1.25,
         ),
+        onPressed: () {
+          Navigator.pushNamed(
+            context,
+            QuizPage.routeName,
+            arguments: CategoryHandler(category),
+          );
+        },
       ),
-      Text(QuestionCatcher.getNumberOfQuestions(category).toString() + ' Fragen'),
-    ];
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:code_labs/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,8 +22,8 @@ class TitleScreenRoot extends StatelessWidget {
             title: 'Qwiz',
             theme: ThemeData(
               brightness: notifier.darkTheme ? Brightness.dark : Brightness.light,
-              primarySwatch: notifier.darkTheme ? Colors.indigo : Colors.lightGreen,
-              primaryColor: notifier.darkTheme ? Colors.indigo : Colors.lightGreen,
+              primarySwatch: materialColorOf(notifier.themeColor),
+              primaryColor: colorOf(notifier.themeColor),
               pageTransitionsTheme: PageTransitionsTheme(builders: {
                 TargetPlatform.iOS: FadeTransitionBuilder(),
                 TargetPlatform.android: FadeTransitionBuilder(),

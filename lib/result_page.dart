@@ -20,13 +20,13 @@ class _ResultPageState extends State<ResultPage> {
     double percentage = score.value.toDouble() / score.maxValue.toDouble();
 
     if (percentage < 0.4)
-      asset = 'assets/AtLeastYouTried.png';
+      asset = 'assets/results/AtLeastYouTried.png';
     else if (percentage < 0.7)
-      asset = 'assets/ThumbsUp.gif';
+      asset = 'assets/results/ThumbsUp.gif';
     else if (percentage < 0.9)
-      asset = 'assets/Proud.gif';
+      asset = 'assets/results/Proud.gif';
     else
-      asset = 'assets/Cheers.gif';
+      asset = 'assets/results/Cheers.gif';
 
     return Image.asset(
       asset,

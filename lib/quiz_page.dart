@@ -16,7 +16,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final _wrongClickedColor = Colors.red.shade300;
+  final _wrongClickedColor = Colors.red.shade400;
   final _rightClickedColor = Colors.green;
 
   bool answerButtonsAreEnabled = true;

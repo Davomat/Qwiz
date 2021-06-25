@@ -36,4 +36,16 @@ class CategoryHandler {
       default:                    return '';
     }
   }
+
+  static String getIcon(Category category) {
+    switch (category) {
+      case Category.cosmos:       return 'assets/icons/cosmos.png';
+      case Category.science:      return 'assets/icons/science.png';
+      case Category.technology:   return 'assets/icons/engineering.png';
+      case Category.programming:  return 'assets/icons/prog.png';
+      case Category.logic:        return 'assets/icons/logic.png';
+      case Category.biology:      return 'assets/icons/bio.png';
+      default:                    return '';
+    }
+  }
 }
