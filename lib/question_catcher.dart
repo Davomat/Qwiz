@@ -146,7 +146,7 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
-      questionText: 'Wie viel Masse muss ein Stern mindestens beseitzen, um bei seinem Tod in ein schwarzes Loch kollabieren zu können?',
+      questionText: 'Wie viel Masse muss ein Stern mindestens besitzen, um bei seinem Tod in ein schwarzes Loch kollabieren zu können?',
       rightAnswer:     '3 Sonnenmassen',
       wrongAnswer1:   '30 Sonnenmassen',
       wrongAnswer2:  '300 Sonnenmassen',
