@@ -72,13 +72,13 @@ class QuestionCatcher {
       questionText: 'Was ist KEIN bekannter Begriff in der Astrophysik?',
       rightAnswer:  'schwarze Entropie',
       wrongAnswer1: 'dunkle Energie',
-      wrongAnswer2: 'scharzes Loch',
+      wrongAnswer2: 'schwarzes Loch',
       wrongAnswer3: 'dunkle Materie',
     ));
 
     questions.add(Question(
       questionText: 'Warum ist dunkle Materie aufspübar aber noch nicht erforscht?',
-      rightAnswer:  'keine Wechselwirkung mit Materie',
+      rightAnswer:  'keine Wechselwirkung mit Licht',
       wrongAnswer1: 'zu große Entfernung zur Erde',
       wrongAnswer2: 'keine Abgrenzung zu Sternen möglich',
       wrongAnswer3: 'Teleskopie zu ungenau (unscharf)',
@@ -185,7 +185,7 @@ class QuestionCatcher {
       wrongAnswer1: 'bis zu 200 Tausend T',
       wrongAnswer2: 'bis zu 50 T',
       wrongAnswer3: 'bis zu 1 T',
-      additionalInformation: 'Magnetare sind Pulsare mit mit extrem intensiven Magnetfeldern, tausendmal stärker als bei Neutronensternen üblich. Schätzungsweise 10 % aller Neutronensterne sind Magnetare.',
+      additionalInformation: 'Magnetare sind Pulsare mit extrem intensiven Magnetfeldern, tausendmal stärker als bei Neutronensternen üblich. Schätzungsweise 10 % aller Neutronensterne sind Magnetare.',
     ));
 
     questions.add(Question(
