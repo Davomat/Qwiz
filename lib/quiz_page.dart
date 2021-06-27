@@ -161,74 +161,76 @@ class _QuizPageState extends State<QuizPage> {
           SettingsButton(),
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(outerSpacing),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(counterText, textScaleFactor: 1.375),
-                SizedBox(height: outerSpacing),
-                SizedBox(
-                  //width: questionWidth,
-                  height: questionHeight,
-                  child: SingleChildScrollView(
-                      child: Text(questionText, textScaleFactor: 1.375),
-                  ),
-                ),
-                SizedBox(height: innerSpacing),
-                Row(
-                  children: [
-                    answerButton(answerText1, buttonColor1, buttonWidth, buttonHeight),
-                    SizedBox(width: innerSpacing),
-                    answerButton(answerText2, buttonColor2, buttonWidth, buttonHeight),
-                  ],
-                ),
-                SizedBox(height: innerSpacing),
-                Row(
-                  children: [
-                    answerButton(answerText3, buttonColor3, buttonWidth, buttonHeight),
-                    SizedBox(width: innerSpacing),
-                    answerButton(answerText4, buttonColor4, buttonWidth, buttonHeight),
-                  ],
-                ),
-                SizedBox(height: innerSpacing),
-                Center(
-                  child: Text('Score: ' + score.value.toString() + ' / ' + score.maxValue.toString()),
-                ),
-              ],
-            ),
-            SingleChildScrollView(
-                child: Text(infoText),
-            ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(
-                    height: 0.5 * buttonHeight,
-                    child: ElevatedButton(
-                      child: Text('Abbruch'),
-                      onPressed: () => Navigator.pop(context),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(outerSpacing),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(counterText, textScaleFactor: 1.375),
+                  SizedBox(height: outerSpacing),
+                  SizedBox(
+                    //width: questionWidth,
+                    height: questionHeight,
+                    child: SingleChildScrollView(
+                        child: Text(questionText, textScaleFactor: 1.375),
                     ),
                   ),
-                ),
-                SizedBox(width: innerSpacing),
-                Expanded(
-                  flex: 2,
-                  child: SizedBox(
-                    height: 0.5 * buttonHeight,
-                    child: ElevatedButton(
-                      child: Text('Weiter'),
-                      onPressed: nextButtonIsEnabled ? () => getNextQuestion() : null,
+                  SizedBox(height: innerSpacing),
+                  Row(
+                    children: [
+                      answerButton(answerText1, buttonColor1, buttonWidth, buttonHeight),
+                      SizedBox(width: innerSpacing),
+                      answerButton(answerText2, buttonColor2, buttonWidth, buttonHeight),
+                    ],
+                  ),
+                  SizedBox(height: innerSpacing),
+                  Row(
+                    children: [
+                      answerButton(answerText3, buttonColor3, buttonWidth, buttonHeight),
+                      SizedBox(width: innerSpacing),
+                      answerButton(answerText4, buttonColor4, buttonWidth, buttonHeight),
+                    ],
+                  ),
+                  SizedBox(height: innerSpacing),
+                  Center(
+                    child: Text('Score: ' + score.value.toString() + ' / ' + score.maxValue.toString()),
+                  ),
+                ],
+              ),
+              SingleChildScrollView(
+                  child: Text(infoText),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: SizedBox(
+                      height: 0.5 * buttonHeight,
+                      child: ElevatedButton(
+                        child: Text('Abbruch'),
+                        onPressed: () => Navigator.pop(context),
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                  SizedBox(width: innerSpacing),
+                  Expanded(
+                    flex: 2,
+                    child: SizedBox(
+                      height: 0.5 * buttonHeight,
+                      child: ElevatedButton(
+                        child: Text('Weiter'),
+                        onPressed: nextButtonIsEnabled ? () => getNextQuestion() : null,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

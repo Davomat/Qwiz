@@ -68,54 +68,56 @@ class TitleScreen extends StatelessWidget {
             ],
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.all(outerSpacing),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  SizedBox(height: 2 * outerSpacing),
-                  Padding(
-                    padding: EdgeInsets.all(outerSpacing),
-                    child: Image.asset(
-                      'assets/Logo.png',
-                      height: logoHeight,
-                      width: logoWidth,
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.all(outerSpacing),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    SizedBox(height: 2 * outerSpacing),
+                    Padding(
+                      padding: EdgeInsets.all(outerSpacing),
+                      child: Image.asset(
+                        'assets/Logo.png',
+                        height: logoHeight,
+                        width: logoWidth,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 2 * outerSpacing),
-                  SizedBox(
-                    width: buttonWidth,
-                    height: buttonHeight,
-                    child: ElevatedButton(
-                      child: Text('Start'.toUpperCase(), textScaleFactor: 1.25,),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          CategoryPage.routeName,
-                        );
-                      },
+                    SizedBox(height: 2 * outerSpacing),
+                    SizedBox(
+                      width: buttonWidth,
+                      height: buttonHeight,
+                      child: ElevatedButton(
+                        child: Text('Start'.toUpperCase(), textScaleFactor: 1.25,),
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            CategoryPage.routeName,
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 2 * outerSpacing),
-                  SizedBox(
-                    width: buttonWidth,
-                    height: buttonHeight,
-                    child: TextButton(
-                      child: Text('Einstellungen', textScaleFactor: 1.25,),
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          SettingsPage.routeName,
-                        );
-                      },
+                    SizedBox(height: 2 * outerSpacing),
+                    SizedBox(
+                      width: buttonWidth,
+                      height: buttonHeight,
+                      child: TextButton(
+                        child: Text('Einstellungen', textScaleFactor: 1.25,),
+                        onPressed: () {
+                          Navigator.pushNamed(
+                            context,
+                            SettingsPage.routeName,
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              copyrightBlock(0.375 * outerSpacing),
-            ],
+                  ],
+                ),
+                copyrightBlock(0.375 * outerSpacing),
+              ],
+            ),
           ),
         ),
       ),

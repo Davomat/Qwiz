@@ -21,24 +21,26 @@ class CategoryPage extends StatelessWidget {
           SettingsButton(),
         ],
       ),
-      body: ListView(
-        padding: EdgeInsets.all(outerSpacing),
-        children: [
-          SizedBox(height: outerSpacing),
-          Center(
-            child: Text(
-              "Wähle eine Kategorie!",
-              textScaleFactor: 2.0,
+      body: SafeArea(
+        child: ListView(
+          padding: EdgeInsets.all(outerSpacing),
+          children: [
+            SizedBox(height: outerSpacing),
+            Center(
+              child: Text(
+                "Wähle eine Kategorie!",
+                textScaleFactor: 2.0,
+              ),
             ),
-          ),
-          SizedBox(height: outerSpacing),
-          _insertButtonLeft( context, outerSpacing, Category.cosmos),
-          _insertButtonRight(context, outerSpacing, Category.science),
-          _insertButtonLeft( context, outerSpacing, Category.technology),
-          _insertButtonRight(context, outerSpacing, Category.programming),
-          _insertButtonLeft(context, outerSpacing, Category.biology),
-          _insertButtonRight( context, outerSpacing, Category.logic),
-        ],
+            SizedBox(height: outerSpacing),
+            _insertButtonLeft( context, outerSpacing, Category.cosmos),
+            _insertButtonRight(context, outerSpacing, Category.science),
+            _insertButtonLeft( context, outerSpacing, Category.technology),
+            _insertButtonRight(context, outerSpacing, Category.programming),
+            _insertButtonLeft(context, outerSpacing, Category.biology),
+            _insertButtonRight( context, outerSpacing, Category.logic),
+          ],
+        ),
       ),
     );
   }
