@@ -14,8 +14,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  ThemeColor _dropdownValue = ThemeColor.green;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,9 +52,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   );
                 }).toList(),
                 onChanged: (ThemeColor? newValue) {
-                  setState(() {
-                    _dropdownValue = notifier.changeColor(newValue!);
-                  });
+                  notifier.changeColor(newValue!);
                 },
               ),
             ),
