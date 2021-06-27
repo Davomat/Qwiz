@@ -3,7 +3,7 @@ import 'dart:math';
 import 'category.dart';
 import 'question.dart';
 
-class QuestionCatcher {
+class QuestionProvider {
 
   static int getNumberOfQuestions(Category category) {
     return getQuestions(category).length;
@@ -32,8 +32,8 @@ class QuestionCatcher {
       case Category.science:      return _getQuestionsAboutScience();
       case Category.technology:   return _getQuestionsAboutTechnology();
       case Category.programming:  return _getQuestionsAboutProgramming();
-      case Category.logic:        return _getQuestionsAboutLogic();
       case Category.biology:      return _getQuestionsAboutBiology();
+      case Category.logic:        return _getQuestionsAboutLogic();
       default:                    return List<Question>.empty();
     }
   }
@@ -553,49 +553,6 @@ class QuestionCatcher {
   }
 
 
-  static List<Question> _getQuestionsAboutLogic() {
-    final questions = new List<Question>.empty(growable: true);
-
-    questions.add(Question(
-      questionText: 'Was ist 2^2^2^2?',
-      rightAnswer:  '65.536',
-      wrongAnswer1: '256',
-      wrongAnswer2: '64',
-      wrongAnswer3: '16',
-      additionalInformation: 'Entgegen dem Berechnungsalgorithmus überlicher Taschenrechner (z.B. Windows\' calc.exe) ist das Potenzieren rechtsassoziativ. Das heißt, ohne Klammerung wird \"von rechts nach links\" gerechnet: 2^2^2^2 = 2^(2^[2^2]) = 2^(2^4) = 2^16',
-    ));
-
-    questions.add(Question(
-      questionText: '{7890} = 4     {3664} = 3     {3700} = 2\n{3678} = 3     {5890} = 4     {2630} = 2\n{1890} = 4     {3859} = 3     {7801} = 3\n{1462} = 2     {8444} = 5     {2580} = ?',
-      rightAnswer:  '3',
-      wrongAnswer1: '2',
-      wrongAnswer2: '4',
-      wrongAnswer3: '5',
-      additionalInformation: 'Gesucht ist die Anzahl geschlossener Bereiche in den Ziffern. Die 1, 2, 3, 5 und 7 haben 0, die 0, 4, 6 und 9 haben 1 und die 8 hat 2.',
-    ));
-
-    questions.add(Question(
-      questionText: 'Wie viele Wägungen sind mit einer Balkenwaage mit 2 Schalen nötig, um 1 schwerere unter 8 ansonsten gleich-schweren Kugeln zu identifizieren?',
-      rightAnswer:  '2',
-      wrongAnswer1: '3',
-      wrongAnswer2: '4',
-      wrongAnswer3: '5',
-      additionalInformation: 'Man wägt erst 3 gegen 3 ab und behält die schwereren bzw. die 2 übrigen, wenn sie gleich schwer sind. Von den übrigen wägt man 1 gegen 1 ab. Die schwerere oder übrige Kugel ist die gesuchte.',
-    ));
-
-    questions.add(Question(
-      questionText: 'Herr Müller hat 2 Kinder. Eins davon ist ein Mädchen. Mit welcher Wahrscheinlichkeit ist das andere ein Junge?',
-      rightAnswer:  '2/3',
-      wrongAnswer1: '1/4',
-      wrongAnswer2: '1/3',
-      wrongAnswer3: '1/2',
-      additionalInformation: 'Es gibt grundsätzlich 4 Möglichkeiten für Kind 1 und 2 (in Reihenfolge): J-J, J-M, M-J, M-M. Wenn eines der beiden ein Junge sein muss, bleiben die Möglichkeiten J-J, J-M und M-J.',
-    ));
-
-    return questions;
-  }
-
-
   static List<Question> _getQuestionsAboutBiology() {
     final questions = new List<Question>.empty(growable: true);
 
@@ -633,7 +590,7 @@ class QuestionCatcher {
     ));
 
     questions.add(Question(
-      questionText: 'Welches menschliche Organ hat die größte innere Oberfläche?',
+      questionText: 'Welches menschliche Organ hat ausgebreitet die größte Oberfläche?',
       rightAnswer:  'Lunge',
       wrongAnswer1: 'Haut',
       wrongAnswer2: 'Darm',
@@ -691,6 +648,49 @@ class QuestionCatcher {
       wrongAnswer2: 'Bekämpfung von Bakterien und Zahnbelag',
       wrongAnswer3: 'Pflege und Stärkung des Zahnfleischs',
       additionalInformation: 'Die von Mikroorganismen erzeugte Säure kann das Calciumhydroxid (genauer: die Hydroxid-Ionen) im Zahnschmelz lösen, wodurch Karies entsteht. Die Fluorid-Ionen können sich an der Stelle der herausgelösten Hydroxid-Ionen binden und bilden eine festere Verbindung als vorher.',
+    ));
+
+    return questions;
+  }
+
+
+  static List<Question> _getQuestionsAboutLogic() {
+    final questions = new List<Question>.empty(growable: true);
+
+    questions.add(Question(
+      questionText: 'Was ist 2^2^2^2?',
+      rightAnswer:  '65.536',
+      wrongAnswer1: '256',
+      wrongAnswer2: '64',
+      wrongAnswer3: '16',
+      additionalInformation: 'Entgegen dem Berechnungsalgorithmus überlicher Taschenrechner (z.B. Windows\' calc.exe) ist das Potenzieren rechtsassoziativ. Das heißt, ohne Klammerung wird \"von rechts nach links\" gerechnet: 2^2^2^2 = 2^(2^[2^2]) = 2^(2^4) = 2^16',
+    ));
+
+    questions.add(Question(
+      questionText: '{7890} = 4     {3664} = 3     {3700} = 2\n{3678} = 3     {5890} = 4     {2630} = 2\n{1890} = 4     {3859} = 3     {7801} = 3\n{1462} = 2     {8444} = 5     {2580} = ?',
+      rightAnswer:  '3',
+      wrongAnswer1: '2',
+      wrongAnswer2: '4',
+      wrongAnswer3: '5',
+      additionalInformation: 'Gesucht ist die Anzahl geschlossener Bereiche in den Ziffern. Die 1, 2, 3, 5 und 7 haben 0, die 0, 4, 6 und 9 haben 1 und die 8 hat 2.',
+    ));
+
+    questions.add(Question(
+      questionText: 'Wie viele Wägungen sind mit einer Balkenwaage mit 2 Schalen nötig, um 1 schwerere unter 8 ansonsten gleich-schweren Kugeln zu identifizieren?',
+      rightAnswer:  '2',
+      wrongAnswer1: '3',
+      wrongAnswer2: '4',
+      wrongAnswer3: '5',
+      additionalInformation: 'Man wägt erst 3 gegen 3 ab und behält die schwereren bzw. die 2 übrigen, wenn sie gleich schwer sind. Von den übrigen wägt man 1 gegen 1 ab. Die schwerere oder übrige Kugel ist die gesuchte.',
+    ));
+
+    questions.add(Question(
+      questionText: 'Herr Müller hat 2 Kinder. Eins davon ist ein Mädchen. Mit welcher Wahrscheinlichkeit ist das andere ein Junge?',
+      rightAnswer:  '2/3',
+      wrongAnswer1: '1/4',
+      wrongAnswer2: '1/3',
+      wrongAnswer3: '1/2',
+      additionalInformation: 'Es gibt grundlegend 4 Möglichkeiten für Kind 1 und 2 (in Reihenfolge): J-J, J-M, M-J, M-M. Mit dem Wissen, dass eines der beiden ein Mädchen ist, bleiben die Möglichkeiten J-M, M-J und M-M. Aus diesen 3 Möglichkeiten sind 2 für die Fragestellung zutrffend.',
     ));
 
     return questions;

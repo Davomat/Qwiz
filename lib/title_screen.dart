@@ -6,7 +6,7 @@ import 'quiz_page.dart';
 import 'result_page.dart';
 import 'settings.dart';
 import 'theme_color.dart';
-import 'theme_provider.dart';
+import 'theme_notifier.dart';
 
 
 class TitleScreenRoot extends StatelessWidget {
@@ -22,8 +22,8 @@ class TitleScreenRoot extends StatelessWidget {
             title: 'Qwiz',
             theme: ThemeData(
               brightness: notifier.darkTheme ? Brightness.dark : Brightness.light,
-              primarySwatch: materialColorOf(notifier.themeColor),
-              primaryColor: colorOf(notifier.themeColor),
+              primarySwatch: ColorHandler.materialColorOf(notifier.themeColor),
+              primaryColor: ColorHandler.colorOf(notifier.themeColor),
               pageTransitionsTheme: PageTransitionsTheme(builders: {
                 TargetPlatform.iOS: FadeTransitionBuilder(),
                 TargetPlatform.android: FadeTransitionBuilder(),

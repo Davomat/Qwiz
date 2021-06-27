@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'category.dart';
-import 'question_catcher.dart';
+import 'question_provider.dart';
 import 'quiz_page.dart';
 import 'settings.dart';
 
@@ -58,7 +58,7 @@ class CategoryPage extends StatelessWidget {
                 Image.asset(CategoryHandler.getIcon(category), width: 1.5 * outerSpacing),
               ],
             ),
-            Text(QuestionCatcher.getNumberOfQuestions(category).toString() + ' Fragen'),
+            Text(QuestionProvider.getNumberOfQuestions(category).toString() + ' Fragen'),
           ]
       ),
     );
@@ -77,7 +77,7 @@ class CategoryPage extends StatelessWidget {
               _insertButton(context, outerSpacing, category),
             ],
           ),
-          Text(QuestionCatcher.getNumberOfQuestions(category).toString() + ' Fragen'),
+          Text(QuestionProvider.getNumberOfQuestions(category).toString() + ' Fragen'),
         ]
       ),
     );

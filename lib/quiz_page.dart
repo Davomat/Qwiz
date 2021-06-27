@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'category.dart';
 import 'question.dart';
-import 'question_catcher.dart';
+import 'question_provider.dart';
 import 'result_page.dart';
 import 'score.dart';
 import 'settings.dart';
@@ -16,7 +16,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  final _wrongClickedColor = Colors.red.shade400;
+  final _wrongClickedColor = Colors.deepOrange;
   final _rightClickedColor = Colors.green;
 
   bool answerButtonsAreEnabled = true;
@@ -102,7 +102,7 @@ class _QuizPageState extends State<QuizPage> {
       counterText = 'Frage ' + (questionCounter + 1).toString() + ' von ' + numberOfQuestions.toString() + ':';
       Question currentQuestion = questions.elementAt(questionCounter);
       questionText = currentQuestion.questionText;
-      List<String> answers = QuestionCatcher.getRandomAnswerList(currentQuestion);
+      List<String> answers = QuestionProvider.getRandomAnswerList(currentQuestion);
       answerText1 = answers.removeLast();
       answerText2 = answers.removeLast();
       answerText3 = answers.removeLast();
@@ -142,7 +142,7 @@ class _QuizPageState extends State<QuizPage> {
 
     resetButtonColors();
     if (answerButtonsAreEnabled) {
-      setQuestions(QuestionCatcher.getQuestions(category));
+      setQuestions(QuestionProvider.getQuestions(category));
       setNumberOfQuestions();
       updateAllTexts(questions);
     }

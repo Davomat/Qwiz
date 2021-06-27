@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'theme_color.dart';
-import 'theme_provider.dart';
+import 'theme_notifier.dart';
 
 
 class SettingsPage extends StatefulWidget {
@@ -20,43 +20,60 @@ class _SettingsPageState extends State<SettingsPage> {
       appBar: AppBar(
         title: Text('Einstellungen'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(32.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Theme:', textScaleFactor: 1.5),
-            SizedBox(height: 16.0),
-            Consumer<ThemeNotifier>(
-              builder:(context, notifier, child) => SwitchListTile(
-                contentPadding: EdgeInsets.all(0.0),
-                title: Text("Dark Mode"),
-                onChanged:(value){
-                  notifier.toggleTheme();
-                } ,
-                value: notifier.darkTheme,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(32.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Theme:', textScaleFactor: 1.5),
+              SizedBox(height: 16.0),
+              Consumer<ThemeNotifier>(
+                builder:(context, notifier, child) => SwitchListTile(
+                  contentPadding: EdgeInsets.all(0.0),
+                  title: Text("Dark Mode"),
+                  onChanged:(value){
+                    notifier.toggleTheme();
+                  } ,
+                  value: notifier.darkTheme,
+                ),
               ),
-            ),
-            Consumer<ThemeNotifier>(
-              builder:(context, notifier, child) => DropdownButton(
-                iconSize: 48.0,
-                isExpanded: true,
-                iconEnabledColor: Theme.of(context).primaryColor,
-                iconDisabledColor: Theme.of(context).primaryColor,
-                value: notifier.themeColor,
-                items: getAllColors()
-                  .map<DropdownMenuItem<ThemeColor>>((ThemeColor value) {
-                  return DropdownMenuItem(
-                    value: value,
-                    child: Text(stringOf(value)),
-                  );
-                }).toList(),
-                onChanged: (ThemeColor? newValue) {
-                  notifier.changeColor(newValue!);
-                },
+              Consumer<ThemeNotifier>(
+                builder:(context, notifier, child) => DropdownButton(
+                  iconSize: 48.0,
+                  isExpanded: true,
+                  iconEnabledColor: Theme.of(context).primaryColor,
+                  iconDisabledColor: Theme.of(context).primaryColor,
+                  value: notifier.themeColor,
+                  items: ColorHandler.getAllColors()
+                    .map<DropdownMenuItem<ThemeColor>>((ThemeColor value) {
+                    return DropdownMenuItem(
+                      value: value,
+                      child: Text(ColorHandler.stringOf(value)),
+                    );
+                  }).toList(),
+                  onChanged: (ThemeColor? newValue) {
+                    notifier.changeColor(newValue!);
+                  },
+                ),
               ),
-            ),
-          ],
+              SizedBox(height: 48.0),
+              Text('Special Thanks to:', textScaleFactor: 1.5),
+              SizedBox(height: 16.0),
+              SingleChildScrollView(
+                child: Text(
+                    '• flutter.dev' + '\n' +
+                    '• stackoverflow.com' + '\n' +
+                    '• maiLab @YoutTube' + '\n' +
+                    '• Kurzgesagt @YoutTube' + '\n' +
+                    '• Veritasium @YoutTube' + '\n' +
+                    '• wikipedia.org' + '\n' +
+                    '\n' +
+                    'Besonderer Dank geht auch an meine Freunde und Familie, die mir mit vielen Vorschlägen und Tests geholfen haben, das Quiz zu vervollständigen.'
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
