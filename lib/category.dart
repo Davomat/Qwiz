@@ -15,9 +15,9 @@ class CategoryHandler {
 
   static String getFullString(Category category) {
     switch (category) {
-      case Category.cosmos:       return 'Kosmos und Physik';
+      case Category.cosmos:       return 'Kosmos und Größe';
       case Category.science:      return 'Naturwissenschaften';
-      case Category.technology:   return 'Technik / Ingenieurswissen';
+      case Category.technology:   return 'Technik und Technologie';
       case Category.programming:  return 'Informatik / Programmierung';
       case Category.logic:        return 'Logik und Mathematik';
       case Category.biology:      return 'Biologie und Umwelt';

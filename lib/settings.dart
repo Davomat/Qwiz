@@ -69,7 +69,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     '• Veritasium @YoutTube' + '\n' +
                     '• wikipedia.org' + '\n' +
                     '\n' +
-                    'Besonderer Dank geht auch an meine Freunde und Familie, die mir mit vielen Vorschlägen und Tests geholfen haben, das Quiz zu vervollständigen.'
+                    'Besonderer Dank geht auch an meine Freunde und Familie, die mir mit vielen Vorschlägen und Tests geholfen haben, das Quiz zu verschönern und zu vervollständigen.'
                 ),
               ),
             ],

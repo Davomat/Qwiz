@@ -373,6 +373,14 @@ class QuestionProvider {
     ));
 
     questions.add(Question(
+      questionText: 'Was beschreibt das Elastizitätsmodul genauer?',
+      rightAnswer:  'reversible Verformung von Festkörpern',
+      wrongAnswer1: 'Verfestigung von viskosen Flüssigkeiten',
+      wrongAnswer2: 'Periodendauer von pendelnden Massen',
+      wrongAnswer3: 'Dämpfung von schwingenden Federn',
+    ));
+
+    questions.add(Question(
       questionText: 'Die ISS umrundet die Erde 15,5 mal am Tag in 400 km Höhe. Wie schnell fliegt sie?',
       rightAnswer:  'ca. 27.600 km/h',
       wrongAnswer1: 'ca. 2.760 km/h',
