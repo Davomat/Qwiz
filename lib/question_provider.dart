@@ -401,7 +401,7 @@ class QuestionProvider {
       questionText: 'Wie klein sind die Strukturgrößen in aktuellen Prozessoren von 2020?',
       rightAnswer:  '10 nm',
       wrongAnswer1: '100 nm',
-      wrongAnswer2: '1 \u00B5m',
+      wrongAnswer2: '1 µm',
       wrongAnswer3: '1 nm',
       additionalInformation: 'Die Strukturgröße beschreibt in der Mikro- und Nanoelektronik die kleinste realisierte Kantenlänge der Plotter-Einheit. Die damit erzeugten Strukturen sind in der Regel etwas kleiner als die für die Maske benutzte Plotter-Einheit.',
     ));

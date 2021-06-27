@@ -149,7 +149,7 @@ class TitleScreen extends StatelessWidget {
             Row(
               children: [
                 Image.asset('assets/D.png', height: madeLogosSize,),
-                Text(' Daveloper - \u00a9 David Lange'),
+                Text(' Daveloper - © David Lange'),
               ],
             ),
           ],
