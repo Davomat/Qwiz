@@ -481,19 +481,19 @@ class QuestionProvider {
     ));
 
     questions.add(Question(
-      questionText: 'Wie sieht die Zahl 1000 im Binärsystem aus?',
-      rightAnswer:  '1111101000',
-      wrongAnswer1: '100100100100',
-      wrongAnswer2: '11110000',
-      wrongAnswer3: '11000000011',
-      additionalInformation: '1000 = 512 + 256 + 128 + 64 + 32 + 8 = 1∙2^9 + 1∙2^8 + 1∙2^7 + 1∙2^6 + 1∙2^5 + 0∙2^4 + 1∙2^3 + 0∙2^2 + 0∙2^1 + 0∙2^0',
+      questionText: 'Die Binärzahl 1010 entspricht im uns bekannten Dezimalsystem der Zahl ...',
+      rightAnswer:  '10',
+      wrongAnswer1: '2020',
+      wrongAnswer2: '4',
+      wrongAnswer3: '100',
+      additionalInformation: 'Von rechts nach links gelesen berechnet man: 0∙2^0 + 1∙2^1 + 0∙2^2 + 1∙2^3 = 0 + 2 + 0 + 8 = 10',
     ));
 
     questions.add(Question(
-      questionText: 'Wie sieht die Zahl 1000 im Hexadezimalsystem aus?',
+      questionText: 'Die Dezimal 1000 entspricht im Hexadezimalsystem der Zahl ...',
       rightAnswer:  '3E8',
       wrongAnswer1: '1750',
-      wrongAnswer2: 'F324A',
+      wrongAnswer2: 'F3200',
       wrongAnswer3: 'CA',
       additionalInformation: 'Es gibt die Ziffern 0 bis 9, sowie A [10], B [11], C [12], D [13], E [14] und F [15]. 1000 = 3∙16^2 + E∙16^1 + 8∙16^0',
     ));
