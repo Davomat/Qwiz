@@ -13,6 +13,17 @@ class CategoryHandler {
 
   CategoryHandler(this.category);
 
+  static List<Category> getCategoryList() {
+    return [
+      Category.cosmos,
+      Category.science,
+      Category.technology,
+      Category.programming,
+      Category.biology,
+      Category.logic,
+    ];
+  }
+
   static String getFullString(Category category) {
     switch (category) {
       case Category.cosmos:       return 'Kosmos und Größe';

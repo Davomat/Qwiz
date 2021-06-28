@@ -24,42 +24,44 @@ class CategoryPage extends StatelessWidget {
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.all(outerSpacing),
-          children: [
-            SizedBox(height: outerSpacing),
-            Center(
-              child: Text(
-                "Wähle eine Kategorie!",
-                textScaleFactor: 2.0,
-              ),
-            ),
-            SizedBox(height: outerSpacing),
-            _insertButtonLeft( context, outerSpacing, Category.cosmos),
-            _insertButtonRight(context, outerSpacing, Category.science),
-            _insertButtonLeft( context, outerSpacing, Category.technology),
-            _insertButtonRight(context, outerSpacing, Category.programming),
-            _insertButtonLeft(context, outerSpacing, Category.biology),
-            _insertButtonRight( context, outerSpacing, Category.logic),
-          ],
+          children: _orderedCategoryButtonsWithHeading(context, outerSpacing, CategoryHandler.getCategoryList()),
         ),
       ),
     );
+  }
+
+  List<Widget> _orderedCategoryButtonsWithHeading(BuildContext context, double outerSpacing, List<Category> listOfCategories) {
+    List<Widget> widgets = List<Widget>.empty(growable: true);
+
+    widgets.add(SizedBox(height: outerSpacing));
+    widgets.add(Center(child: Text("Wähle eine Kategorie!", textScaleFactor: 2.0)));
+    widgets.add(SizedBox(height: outerSpacing));
+
+    for (int i=0; i < listOfCategories.length; i++) {
+      if (i % 2 == 0)
+        widgets.add(_insertButtonLeft(context, outerSpacing, listOfCategories[i]));
+      else
+        widgets.add(_insertButtonRight(context, outerSpacing, listOfCategories[i]));
+    }
+
+    return widgets;
   }
 
   Widget _insertButtonLeft(BuildContext context, double outerSpacing, Category category) {
     return Padding(
       padding: EdgeInsets.only(top: 0.75 * outerSpacing),
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _insertButton(context, outerSpacing, category),
-                Image.asset(CategoryHandler.getIcon(category), width: 1.5 * outerSpacing),
-              ],
-            ),
-            Text(QuestionProvider.getNumberOfQuestions(category).toString() + ' Fragen'),
-          ]
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _insertButton(context, outerSpacing, category),
+              Image.asset(CategoryHandler.getIcon(category), width: 1.5 * outerSpacing),
+            ],
+          ),
+          Text(QuestionProvider.getNumberOfQuestions(category).toString() + ' Fragen'),
+        ]
       ),
     );
   }
