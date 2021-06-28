@@ -698,7 +698,7 @@ class QuestionProvider {
       wrongAnswer1: '1/4',
       wrongAnswer2: '1/3',
       wrongAnswer3: '1/2',
-      additionalInformation: 'Es gibt grundlegend 4 Möglichkeiten für Kind 1 und 2 (in Reihenfolge): J-J, J-M, M-J, M-M. Mit dem Wissen, dass eines der beiden ein Mädchen ist, bleiben die Möglichkeiten J-M, M-J und M-M. Aus diesen 3 Möglichkeiten sind 2 für die Fragestellung zutrffend.',
+      additionalInformation: 'Es gibt grundlegend 4 Möglichkeiten für Kind 1 und 2 (in Reihenfolge): J-J, J-M, M-J, M-M. Mit dem Wissen, dass eines der beiden ein Mädchen ist, bleiben die Möglichkeiten J-M, M-J und M-M. Aus diesen 3 Möglichkeiten sind 2 für die Fragestellung zutreffend.',
     ));
 
     return questions;
