@@ -35,7 +35,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   onChanged:(value){
                     notifier.toggleTheme();
                   } ,
-                  value: notifier.darkTheme,
+                  value: notifier.darkMode,
                 ),
               ),
               Consumer<ThemeNotifier>(
@@ -45,7 +45,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   iconEnabledColor: Theme.of(context).primaryColor,
                   iconDisabledColor: Theme.of(context).primaryColor,
                   value: notifier.themeColor,
-                  items: ColorHandler.getAllColors()
+                  items: ColorHandler.getAllThemeColors()
                     .map<DropdownMenuItem<ThemeColor>>((ThemeColor value) {
                     return DropdownMenuItem(
                       value: value,

@@ -5,23 +5,21 @@ import 'theme_color.dart';
 
 class ThemeNotifier extends ChangeNotifier {
   final key = "theme";
-  bool _darkTheme = false;
+  bool _darkMode = false;
   ThemeColor _themeColor = ThemeColor.green;
 
   ThemeNotifier();
 
-  bool get darkTheme => _darkTheme;
+  bool get darkMode => _darkMode;
   ThemeColor get themeColor => _themeColor;
 
-  bool toggleTheme(){
-    _darkTheme = !_darkTheme;
+  toggleTheme(){
+    _darkMode = !_darkMode;
     notifyListeners();
-    return _darkTheme;
   }
 
-  ThemeColor changeColor(ThemeColor newColor){
+  changeColor(ThemeColor newColor){
     _themeColor = newColor;
     notifyListeners();
-    return _themeColor;
   }
 }

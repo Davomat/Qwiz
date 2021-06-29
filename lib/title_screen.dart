@@ -21,9 +21,9 @@ class TitleScreenRoot extends StatelessWidget {
           return MaterialApp(
             title: 'Qwiz',
             theme: ThemeData(
-              brightness: notifier.darkTheme ? Brightness.dark : Brightness.light,
-              primarySwatch: ColorHandler.materialColorOf(notifier.themeColor),
-              primaryColor: ColorHandler.colorOf(notifier.themeColor),
+              brightness: notifier.darkMode ? Brightness.dark : Brightness.light,
+              primarySwatch: ColorHandler.colorOf(notifier.themeColor, notifier.darkMode),
+              primaryColor: ColorHandler.colorOf(notifier.themeColor, notifier.darkMode),
               pageTransitionsTheme: PageTransitionsTheme(builders: {
                 TargetPlatform.iOS: FadeTransitionBuilder(),
                 TargetPlatform.android: FadeTransitionBuilder(),
