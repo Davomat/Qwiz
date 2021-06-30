@@ -1,3 +1,4 @@
+import 'package:code_labs/title_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'category.dart';
@@ -154,7 +155,7 @@ class _QuizPageState extends State<QuizPage> {
       appBar: AppBar(
         leading: Padding(
           padding: EdgeInsets.all(0.125 * AppBar().preferredSize.height),
-          child: Image.asset('assets/Logo.png'),
+          child: Image.asset(TitleScreen.getLogo(Theme.of(context).brightness)),
         ),
         title: Text('Fragen - ' + CategoryHandler.getShortString(category)),
         actions: [

@@ -79,7 +79,7 @@ class TitleScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(outerSpacing),
                     child: Image.asset(
-                      'assets/Logo.png',
+                      getLogo(Theme.of(context).brightness),
                       height: logoHeight,
                       width: logoWidth,
                     ),
@@ -120,6 +120,12 @@ class TitleScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  static String getLogo(Brightness brightness) {
+    return brightness == Brightness.light
+        ? 'assets/LogoLight.png'
+        : 'assets/LogoDark.png';
   }
 
   static Widget copyrightBlock(double spacing) {

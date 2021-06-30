@@ -44,7 +44,7 @@ class _ResultPageState extends State<ResultPage> {
       appBar: AppBar(
         leading: Padding(
           padding: EdgeInsets.all(0.125 * AppBar().preferredSize.height),
-          child: Image.asset('assets/Logo.png'),
+          child: Image.asset(TitleScreen.getLogo(Theme.of(context).brightness)),
         ),
         title: Text('Ergebnis'),
         actions: [

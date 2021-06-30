@@ -16,40 +16,39 @@ enum ThemeColor {
 }
 
 class ColorHandler {
-  static final myBrownLight  = Colors.brown.shade200;
-  static final myYellowLight = Colors.yellow.shade600;
-  static final myAmberLight  = Colors.amber.shade500;
-  static final myOrangeLight = Colors.orange.shade500;
-  static final myRedLight    = Color.fromARGB(0xff, 0xff, 0x6f, 0x6f);
-  static final myPinkLight   = Color.fromARGB(0xff, 0xf8, 0x73, 0xa0);
-  static final myVioletLight = Colors.purple.shade200;
-  static final myPurpleLight = Colors.deepPurple.shade200;
-  static final myIndigoLight = Colors.indigo.shade200;
-  static final myBlueLight   = Colors.lightBlue.shade400;
-  static final myCyanLight   = Colors.cyan.shade400;
-  static final myGreenLight  = Colors.lightGreen.shade500;
-  static final myLimeLight   = Colors.lime.shade500;
+  static final myBrownLight  = Color.fromARGB(0xff, 0xae, 0x99, 0x91);
+  static final myYellowLight = Color.fromARGB(0xff, 0xff, 0xca, 0x28); // Colors.amber.shade300;
+  static final myOrangeLight = Color.fromARGB(0xff, 0xff, 0xa7, 0x26); // Colors.orange.shade400;
+  static final myRedLight    = Color.fromARGB(0xff, 0xff, 0x7a, 0x7a);
+  static final myPinkLight   = Color.fromARGB(0xff, 0xf0, 0x70, 0xba);
+  static final myVioletLight = Color.fromARGB(0xff, 0xda, 0x83, 0xec);
+  static final myPurpleLight = Color.fromARGB(0xff, 0xb3, 0x8d, 0xec);
+  static final myIndigoLight = Color.fromARGB(0xff, 0x9f, 0xa8, 0xda); // Colors.indigo.shade200;
+  static final myBlueLight   = Color.fromARGB(0xff, 0x64, 0xb5, 0xf6); // Colors.blue.shade300;
+  static final myCyanLight   = Color.fromARGB(0xff, 0x26, 0xc6, 0xda); // Colors.cyan.shade400;
+  static final myGreenLight  = Color.fromARGB(0xff, 0x9c, 0xcc, 0x65); // Colors.lightGreen.shade400;
+  static final myLimeLight   = Color.fromARGB(0xff, 0xd4, 0xe1, 0x57); // Colors.lime.shade400;
 
-  static final myBrownDark   = Color.fromARGB(0xff, 0x6d, 0x4c, 0x41); // brown.shade600;
+  static final myBrownDark   = Color.fromARGB(0xff, 0x6d, 0x4c, 0x41); // Colors.brown.shade600;
   static final myYellowDark  = Color.fromARGB(0xff, 0xbc, 0x87, 0x05);
-  static final myOrangeDark  = Color.fromARGB(0xff, 0xe6, 0x51, 0x00); // orange.shade900;
-  static final myRedDark     = Color.fromARGB(0xff, 0xc6, 0x28, 0x28); // red.shade800;
-  static final myPinkDark    = Color.fromARGB(0xff, 0xad, 0x14, 0x57); // pink.shade800;
-  static final myVioletDark  = Color.fromARGB(0xff, 0x7b, 0x1f, 0xa2); // purple.shade700;
-  static final myPurpleDark  = Color.fromARGB(0xff, 0x5e, 0x35, 0xb1); // deepPurple.shade600;
-  static final myIndigoDark  = Color.fromARGB(0xff, 0x39, 0x49, 0xab); // indigo.shade600;
-  static final myBlueDark    = Color.fromARGB(0xff, 0x15, 0x65, 0xc0); // blue.shade800;
-  static final myCyanDark    = Color.fromARGB(0xff, 0x00, 0x83, 0x8f); // cyan.shade800;
-  static final myGreenDark   = Color.fromARGB(0xff, 0x55, 0x8b, 0x2f); // lightGreen.shade800;
-  static final myLimeDark    = Color.fromARGB(0xff, 0x82, 0x77, 0x17); // lime.shade900;
+  static final myOrangeDark  = Color.fromARGB(0xff, 0xe6, 0x51, 0x00); // Colors.orange.shade900;
+  static final myRedDark     = Color.fromARGB(0xff, 0xc6, 0x28, 0x28); // Colors.red.shade800;
+  static final myPinkDark    = Color.fromARGB(0xff, 0xad, 0x14, 0x57); // Colors.pink.shade800;
+  static final myVioletDark  = Color.fromARGB(0xff, 0x7b, 0x1f, 0xa2); // Colors.purple.shade700;
+  static final myPurpleDark  = Color.fromARGB(0xff, 0x5e, 0x35, 0xb1); // Colors.deepPurple.shade600;
+  static final myIndigoDark  = Color.fromARGB(0xff, 0x39, 0x49, 0xab); // Colors.indigo.shade600;
+  static final myBlueDark    = Color.fromARGB(0xff, 0x15, 0x65, 0xc0); // Colors.blue.shade800;
+  static final myCyanDark    = Color.fromARGB(0xff, 0x00, 0x83, 0x8f); // Colors.cyan.shade800;
+  static final myGreenDark   = Color.fromARGB(0xff, 0x55, 0x8b, 0x2f); // Colors.lightGreen.shade800;
+  static final myLimeDark    = Color.fromARGB(0xff, 0x82, 0x77, 0x17); // Colors.lime.shade900;
 
   static List<ThemeColor> getAllThemeColors() {
     return <ThemeColor>[
+      ThemeColor.brown,
       ThemeColor.yellow,
       ThemeColor.orange,
       ThemeColor.red,
       ThemeColor.pink,
-      ThemeColor.brown,
       ThemeColor.violet,
       ThemeColor.purple,
       ThemeColor.indigo,
@@ -63,7 +62,7 @@ class ColorHandler {
   static String stringOf(ThemeColor colorIN) {
     switch (colorIN) {
       case ThemeColor.brown:  return 'Braun';
-      case ThemeColor.yellow: return 'Gold';
+      case ThemeColor.yellow: return 'Gelb';
       case ThemeColor.orange: return 'Orange';
       case ThemeColor.red:    return 'Rot';
       case ThemeColor.pink:   return 'Pink';
