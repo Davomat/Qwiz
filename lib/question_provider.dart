@@ -615,11 +615,12 @@ class QuestionProvider {
     ));
 
     questions.add(Question(
-      questionText: 'Wie viele Chromosomen hat die menschliche DNA?',
+      questionText: 'Wie viele Chromosomenpaare hat die menschliche DNA?',
       rightAnswer:  '23',
       wrongAnswer1: '21',
       wrongAnswer2: '13',
       wrongAnswer3: '11',
+      additionalInformation: 'Menschen haben 46 Chromosomen, davon 22 Chromosomenpaare (Autosomen) 2 Geschlechtschromosomen oder Gonosomen (XX bei Frauen, XY bei Männern).',
     ));
 
     questions.add(Question(
@@ -651,8 +652,8 @@ class QuestionProvider {
 
     questions.add(Question(
       questionText: 'Wofür ist das Fluorid in Zahnpasta?',
-      rightAnswer:  'Remineralisation des Zahnschmelzes',
-      wrongAnswer1: 'Vorbeuge gegen Zahnstein',
+      rightAnswer:  'Remineralisierung des Zahnschmelzes',
+      wrongAnswer1: 'Vorbeugung gegen Zahnstein',
       wrongAnswer2: 'Bekämpfung von Bakterien und Zahnbelag',
       wrongAnswer3: 'Pflege und Stärkung des Zahnfleischs',
       additionalInformation: 'Die von Mikroorganismen erzeugte Säure kann das Calciumhydroxid (genauer: die Hydroxid-Ionen) im Zahnschmelz lösen, wodurch Karies entsteht. Die Fluorid-Ionen können sich an der Stelle der herausgelösten Hydroxid-Ionen binden und bilden eine festere Verbindung als vorher.',

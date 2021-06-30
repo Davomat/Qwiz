@@ -124,8 +124,8 @@ class TitleScreen extends StatelessWidget {
 
   static String getLogo(Brightness brightness) {
     return brightness == Brightness.light
-        ? 'assets/LogoLight.png'
-        : 'assets/LogoDark.png';
+        ? 'assets/LogoBlack.png'
+        : 'assets/LogoWhite.png';
   }
 
   static Widget copyrightBlock(double spacing) {
