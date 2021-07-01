@@ -4,6 +4,7 @@ import 'category.dart';
 import 'question_provider.dart';
 import 'quiz_page.dart';
 import 'settings.dart';
+import 'title_screen.dart';
 
 
 class CategoryPage extends StatelessWidget {
@@ -16,7 +17,7 @@ class CategoryPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Kategorie-Auswahl'),
+        title: appBarText(context, 'Kategorie-Auswahl'),
         actions: [
           SettingsButton(),
         ],

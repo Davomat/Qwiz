@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'category_page.dart';
@@ -22,8 +23,23 @@ class TitleScreenRoot extends StatelessWidget {
             title: 'Qwiz',
             theme: ThemeData(
               brightness: notifier.darkMode ? Brightness.dark : Brightness.light,
-              primarySwatch: ColorHandler.colorOf(notifier.themeColor, notifier.darkMode),
               primaryColor: ColorHandler.colorOf(notifier.themeColor, notifier.darkMode),
+              elevatedButtonTheme: ElevatedButtonThemeData(
+                style: ElevatedButton.styleFrom(
+                  primary: ColorHandler.colorOf(notifier.themeColor, notifier.darkMode),
+                  onPrimary: notifier.darkMode ? Colors.white : Colors.black,
+                ),
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  primary: ColorHandler.colorOf(notifier.themeColor, notifier.darkMode),
+                ),
+              ),
+              appBarTheme: AppBarTheme(
+                iconTheme: IconThemeData(
+                  color: notifier.darkMode ? Colors.white : Colors.black,
+                ),
+              ),
               pageTransitionsTheme: PageTransitionsTheme(builders: {
                 TargetPlatform.iOS: FadeTransitionBuilder(),
                 TargetPlatform.android: FadeTransitionBuilder(),
@@ -89,7 +105,7 @@ class TitleScreen extends StatelessWidget {
                     width: buttonWidth,
                     height: buttonHeight,
                     child: ElevatedButton(
-                      child: Text('Start'.toUpperCase(), textScaleFactor: 1.25,),
+                      child: Text('Start'.toUpperCase(), textScaleFactor: 1.25),
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
@@ -103,7 +119,7 @@ class TitleScreen extends StatelessWidget {
                     width: buttonWidth,
                     height: buttonHeight,
                     child: TextButton(
-                      child: Text('Einstellungen', textScaleFactor: 1.25,),
+                      child: Text('Einstellungen', textScaleFactor: 1.25),
                       onPressed: () {
                         Navigator.pushNamed(
                           context,
@@ -163,4 +179,15 @@ class TitleScreen extends StatelessWidget {
       ],
     );
   }
+}
+
+Widget appBarText(BuildContext context, String text) {
+  return Text(
+    text,
+    style: TextStyle(
+        color: Theme.of(context).brightness == Brightness.light
+            ? Colors.black
+            : Colors.white
+    ),
+  );
 }

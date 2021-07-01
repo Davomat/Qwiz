@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'theme_color.dart';
 import 'theme_notifier.dart';
+import 'title_screen.dart';
 
 
 class SettingsPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SettingsPageState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Einstellungen'),
+        title: appBarText(context, 'Einstellungen'),
       ),
       body: SafeArea(
         child: Padding(

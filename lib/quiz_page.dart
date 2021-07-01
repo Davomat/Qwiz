@@ -157,7 +157,7 @@ class _QuizPageState extends State<QuizPage> {
           padding: EdgeInsets.all(0.125 * AppBar().preferredSize.height),
           child: Image.asset(TitleScreen.getLogo(Theme.of(context).brightness)),
         ),
-        title: Text('Fragen - ' + CategoryHandler.getShortString(category)),
+        title: appBarText(context, 'Fragen - ' + CategoryHandler.getShortString(category)),
         actions: [
           SettingsButton(),
         ],
