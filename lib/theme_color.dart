@@ -18,20 +18,20 @@ enum ThemeColor {
 class ColorHandler {
   static final myBrownLight  = Color.fromARGB(0xff, 0xae, 0x99, 0x91);
   static final myYellowLight = Color.fromARGB(0xff, 0xff, 0xca, 0x28); // Colors.amber.shade300;
-  static final myOrangeLight = Color.fromARGB(0xff, 0xff, 0xa7, 0x26); // Colors.orange.shade400;
+  static final myOrangeLight = Color.fromARGB(0xff, 0xff, 0xb7, 0x4d); // Colors.orange.shade300;
   static final myRedLight    = Color.fromARGB(0xff, 0xff, 0x7a, 0x7a);
-  static final myPinkLight   = Color.fromARGB(0xff, 0xf0, 0x70, 0xba);
+  static final myPinkLight   = Color.fromARGB(0xff, 0xf0, 0x78, 0xb7);
   static final myVioletLight = Color.fromARGB(0xff, 0xda, 0x83, 0xec);
   static final myPurpleLight = Color.fromARGB(0xff, 0xb3, 0x8d, 0xec);
   static final myIndigoLight = Color.fromARGB(0xff, 0x9f, 0xa8, 0xda); // Colors.indigo.shade200;
   static final myBlueLight   = Color.fromARGB(0xff, 0x64, 0xb5, 0xf6); // Colors.blue.shade300;
-  static final myCyanLight   = Color.fromARGB(0xff, 0x26, 0xc6, 0xda); // Colors.cyan.shade400;
+  static final myCyanLight   = Color.fromARGB(0xff, 0x4d, 0xd0, 0xe1); // Colors.cyan.shade400;
   static final myGreenLight  = Color.fromARGB(0xff, 0x9c, 0xcc, 0x65); // Colors.lightGreen.shade400;
   static final myLimeLight   = Color.fromARGB(0xff, 0xd4, 0xe1, 0x57); // Colors.lime.shade400;
 
   static final myBrownDark   = Color.fromARGB(0xff, 0x6d, 0x4c, 0x41); // Colors.brown.shade600;
   static final myYellowDark  = Color.fromARGB(0xff, 0xbc, 0x87, 0x05);
-  static final myOrangeDark  = Color.fromARGB(0xff, 0xe6, 0x51, 0x00); // Colors.orange.shade900;
+  static final myOrangeDark  = Color.fromARGB(0xff, 0xd6, 0x58, 0x00);
   static final myRedDark     = Color.fromARGB(0xff, 0xc6, 0x28, 0x28); // Colors.red.shade800;
   static final myPinkDark    = Color.fromARGB(0xff, 0xad, 0x14, 0x57); // Colors.pink.shade800;
   static final myVioletDark  = Color.fromARGB(0xff, 0x7b, 0x1f, 0xa2); // Colors.purple.shade700;

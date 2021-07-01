@@ -617,9 +617,9 @@ class QuestionProvider {
     questions.add(Question(
       questionText: 'Wie viele Chromosomenpaare hat die menschliche DNA?',
       rightAnswer:  '23',
-      wrongAnswer1: '21',
-      wrongAnswer2: '13',
-      wrongAnswer3: '11',
+      wrongAnswer1: '11',
+      wrongAnswer2: '31',
+      wrongAnswer3: '43',
       additionalInformation: 'Menschen haben 46 Chromosomen, davon 22 Chromosomenpaare (Autosomen) 2 Geschlechtschromosomen oder Gonosomen (XX bei Frauen, XY bei Männern).',
     ));
 
