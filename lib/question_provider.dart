@@ -672,7 +672,7 @@ class QuestionProvider {
       wrongAnswer1: '256',
       wrongAnswer2: '64',
       wrongAnswer3: '16',
-      additionalInformation: 'Entgegen dem Berechnungsalgorithmus überlicher Taschenrechner (z.B. Windows\' calc.exe) ist das Potenzieren rechtsassoziativ. Das heißt, ohne Klammerung wird \"von rechts nach links\" gerechnet: 2^2^2^2 = 2^(2^[2^2]) = 2^(2^4) = 2^16',
+      additionalInformation: 'Entgegen des Berechnungsalgorithmus\' überlicher Taschenrechner (z.B. Windows\' calc.exe) ist das Potenzieren rechtsassoziativ. Das heißt, ohne Klammerung wird \"von rechts nach links\" gerechnet: 2^2^2^2 = 2^(2^[2^2]) = 2^(2^4) = 2^16',
     ));
 
     questions.add(Question(
