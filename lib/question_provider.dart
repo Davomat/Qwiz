@@ -255,7 +255,7 @@ class QuestionProvider {
       wrongAnswer1: 'flüssig',
       wrongAnswer2: 'gasförmig',
       wrongAnswer3: 'ein Plasma',
-      additionalInformation: 'Der äußere Erdkern ist flüssig, konvktiert und erzeugt das Erdmagnetfeld. Der innere Erdkern ist durch den enormen Druck von 330 GPa fest und besteht zu 80 % aus Eisen und zu 20 % aus Nickel.',
+      additionalInformation: 'Der äußere Erdkern ist flüssig, konvektiert und erzeugt das Erdmagnetfeld. Der innere Erdkern ist durch den enormen Druck von 330 GPa fest und besteht zu 80 % aus Eisen und zu 20 % aus Nickel.',
     ));
 
     questions.add(Question(
@@ -282,7 +282,7 @@ class QuestionProvider {
       wrongAnswer1: 'Mikrowellenstrahlung',
       wrongAnswer2: 'UV-C-Strahlung',
       wrongAnswer3: 'Röntgenstrahlung',
-      additionalInformation: 'Je höher die Frequenz (ja kürzer die Wellenlänge), desto höher die Energie der Strahlung.  Energie: Radiowellen < Mikrowellen < Infrarot-Strahlung < sichtbares Licht < UV-Strahlung < Röntgenstrahlung < Gammastrahlung',
+      additionalInformation: 'Je höher die Frequenz, desto kürzer die Wellenlänge und höher die Energie der Strahlung.  Energie: Radiowellen < Mikrowellen < Infrarot-Strahlung < sichtbares Licht < UV-Strahlung < Röntgenstrahlung < Gammastrahlung',
     ));
 
     questions.add(Question(
@@ -603,7 +603,7 @@ class QuestionProvider {
       wrongAnswer1: 'Haut',
       wrongAnswer2: 'Darm',
       wrongAnswer3: 'Gehirn',
-      additionalInformation: 'Die Haut hat zwar das größte Volumen, ist aber nur bis 2 m² groß. Die LUnge kommt auf gut 100 m². Der Darm hat entgegen früheren Schätzungen von 300 m² nur gut 30 m².',
+      additionalInformation: 'Die Haut hat zwar das größte Volumen, ist aber nur bis 2 m² groß. Die Lunge kommt auf gut 100 m². Der Darm hat entgegen früheren Schätzungen von 300 m² nur gut 30 m².',
     ));
 
     questions.add(Question(
